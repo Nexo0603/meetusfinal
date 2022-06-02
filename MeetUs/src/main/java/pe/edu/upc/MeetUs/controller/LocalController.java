@@ -27,7 +27,7 @@ public class LocalController {
 	@Autowired
 	private LocalOwnerService localownerService; 
 
-	@GetMapping		//	/students
+	@GetMapping		//	/locals
 	public String listLocals(Model model) {
 		
 		try {
