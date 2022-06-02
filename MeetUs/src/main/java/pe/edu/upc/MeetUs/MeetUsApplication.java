@@ -10,5 +10,5 @@ public class MeetUsApplication {
 		SpringApplication.run(MeetUsApplication.class, args);
 	}
 
-	Alvaro
+
 }
