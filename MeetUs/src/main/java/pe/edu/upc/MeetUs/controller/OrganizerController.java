@@ -43,13 +43,7 @@ public class OrganizerController {
 	public String newOrganizer (Model model) {
 		Organizer organizer = new Organizer();
 		model.addAttribute("organizer", organizer);
-		/*try {
-			List<Organizer> organizers = organizerService.getAll();
-			model.addAttribute("organizers", organizers);
-		}catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+	
 		return "organizers/new-organizer";
 	}
 	
