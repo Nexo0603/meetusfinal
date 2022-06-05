@@ -5,46 +5,49 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "organizers", indexes = {@Index(columnList = "organizer_name", name = "organizers_index_name")})
+@Table(name= "organizers", indexes = {@Index(columnList = "organizer_name", name = "organizers_index_organizer_name")})
 public class Organizer {
 
 	@Id
 	@Column(name="organizer_id", length = 3)
-	private Integer id;
-	@Column(name="organizer_name", length = 30)
+	private String id;
+	
+	@Column(name="organizer_name", length = 30,nullable = false)
 	private String name;
+	
 	@Column(name="organizer_lastName", length = 30, nullable = false)
 	private String lastName;
+	
 	@Column(name="organizer_phone", length = 9, nullable = false)
 	private String phone;
+	
 	@Column(name="organizer_dni", length = 8, nullable = false)
 	private String dni;
+	
 	@Column(name="organizer_address", length = 30, nullable = false)
 	private String address;
+	
 	@Column(name="organizer_email", length = 30, nullable = false)
 	private String email;
 	
-	@OneToMany(mappedBy = "organizer", fetch= FetchType.LAZY)
+	@OneToMany(mappedBy = "organizer")
 	private List<Payment> payments;
 
 	public Organizer() {
 		payments = new ArrayList<>();
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -95,16 +98,5 @@ public class Organizer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public List<Payment> getPayments() {
-		return payments;
-	}
-
-	public void setPayments(List<Payment> payments) {
-		this.payments = payments;
-	}
-
-
-	
 	
 }

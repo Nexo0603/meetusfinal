@@ -19,12 +19,12 @@ public class OrganizerServiceImpl implements OrganizerService {
 	private OrganizerRepository organizerRepository;
 
 	@Override
-	public JpaRepository<Organizer, Integer> getJpaRepository() {
-		return organizerRepository;
+	public JpaRepository<Organizer, String> getJpaRepository() {
+		return this.organizerRepository;
 	}
 
 	@Override
 	public List<Organizer> findByName(String name) throws Exception {
-		return organizerRepository.findByName(name);
+		return this.organizerRepository.findByName(name);
 	}
 }

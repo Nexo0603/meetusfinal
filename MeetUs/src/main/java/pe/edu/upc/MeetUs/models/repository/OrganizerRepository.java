@@ -10,6 +10,6 @@ import pe.edu.upc.MeetUs.models.entities.Organizer;
 
 
 @Repository
-public interface OrganizerRepository extends JpaRepository<Organizer, Integer>{
+public interface OrganizerRepository extends JpaRepository<Organizer, String>{
 List<Organizer> findByName(String name) throws Exception;
 }

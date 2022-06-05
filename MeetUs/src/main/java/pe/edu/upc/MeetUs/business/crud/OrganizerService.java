@@ -6,6 +6,6 @@ import pe.edu.upc.MeetUs.models.entities.Organizer;
 
 
 
-public interface OrganizerService extends CrudService<Organizer, Integer>{
+public interface OrganizerService extends CrudService<Organizer, String>{
 List<Organizer> findByName(String name) throws Exception;
 }
