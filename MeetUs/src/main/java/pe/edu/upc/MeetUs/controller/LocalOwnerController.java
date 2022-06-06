@@ -43,6 +43,20 @@ public class LocalOwnerController {
 		return "localowners/new-localowner";
 	}
 	
+	@GetMapping		//	/locals
+	public String listLocalOwners(Model model) {
+		
+		try {
+			List<LocalOwner> localowners = localownerService.getAll();
+			model.addAttribute("localowners", localowners);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "localowners/list-localowners";
+	}
+	
 	@PostMapping("savenew")	//	/localowners/savenew
 	public String saveLocalOwner(Model model, @ModelAttribute("localowner") LocalOwner localowner) {
 		try {
