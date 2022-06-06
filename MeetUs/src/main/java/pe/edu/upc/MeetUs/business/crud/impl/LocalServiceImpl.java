@@ -2,6 +2,8 @@ package pe.edu.upc.MeetUs.business.crud.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -25,5 +27,5 @@ public class LocalServiceImpl implements LocalService {
 	public List<Local> findByName(String name) throws Exception {
 		return this.localRepository.findByName(name);
 	}
-
+	
 }
