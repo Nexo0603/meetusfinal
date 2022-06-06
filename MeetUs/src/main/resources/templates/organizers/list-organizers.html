@@ -49,8 +49,8 @@
 		      <td th:text="${organizer.email}">Email</td>
 		      
 		      <td>
-		      	<a class="btn btn-warning" href="#" role="button"> <i class="fas fa-edit"></i> </a>
-		      	<a class="btn btn-danger" href="#" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      	<a class="btn btn-warning" th:href="@{'/organizers/' + ${organizer.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/organizers/' + ${organizer.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
 		      </td>
 		    </tr>
 		  </tbody>
