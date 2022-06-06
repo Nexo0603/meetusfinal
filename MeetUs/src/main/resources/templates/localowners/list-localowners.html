@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>List Local Owners</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Local Owners</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Local Owners
+	  </div>
+	  <div class="card-body">
+	    
+	    <table class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Name</th>
+		      <th scope="col">Last Name</th>
+		      <th scope="col">Phone</th>
+		      <th scope="col">DNI</th>
+		      <th scope="col">Address</th>
+		      <th scope="col">Email</th>
+		      <th scope="col"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="localowner : ${localowners}">
+		      <th scope="row" th:text="${localowner.id}">1</th>
+		      <td th:text="${localowner.name}"></td>
+		      <td th:text="${localowner.lastName}"></td>
+		      <td th:text="${localowner.phone}"></td>
+		      <td th:text="${localowner.dni}"></td>
+		      <td th:text="${localowner.address}"></td>
+		      <td th:text="${localowner.email}"></td>
+		      <td>
+		      	<a class="btn btn-warning" th:href="@{'/localowners/' + ${localowner.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/localowners/' + ${localowner.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	    
+	  </div>
+	  <div class="card-footer text-muted">
+	    <a class="btn btn-primary" th:href="@{/localowners/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	  </div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>

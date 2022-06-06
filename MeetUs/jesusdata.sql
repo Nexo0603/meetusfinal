@@ -7,5 +7,5 @@ INSERT INTO locals(id, l_name, l_district, l_description, l_cost, localowner_id)
 INSERT INTO localowner(id, lo_name, lo_lastname, lo_phone, lo_dni, lo_address, lo_email) VALUES
 	(1, 'Martin', 'Zuniga', '902144956', '72908326', 'Av Los Nenufares 542', 'jesuzuniga0603@gmail.com') ,
 	(2, 'Alvaro', 'Gamonal', '938644906', '73008327', 'Av Faucett 5452', 'alvarogamonal0505@gmail.com'),
-	(3, 'Erick', 'Hennings', '949203035', '71761630', 'Av Tomas Valle 13420', 'erickhennings2609@gmail.com');
+	(3, 'Erick', 'Hennings', '949203035', '71761630', 'Av Tomas Valle 13420', 'erickhennings2609@gmail.com'),
 	(4, 'Cesar', 'Cardenas', '977412166', '72384991', 'Av El Olivar 2912', 'cesarcardenas1012@gmail.com');
