@@ -1,10 +1,92 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Edit Locals</title>
 </head>
 <body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item"><a th:href="@{/inventory}">Locals</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Edit Locals
+	  </div>
+	  <div class="card-body" style="text-align: left;">
+	  	
+	  	<form th:action="@{'/locals/' + ${local.id} + '/update'}" th:object="${local}" method="post" class="row g-3 needs-validation" novalidate>
+		  <div class="col-md-3">
+		    <label for="name" class="form-label">Name</label>
+		    <input type="text" class="form-control" th:field="*{name}" required>
+		    <div class="valid-feedback">
+		      OK!
+		    </div>
+		  </div>
+
+		  
+		  <div class="col-md-2">
+		    <label for="district" class="form-label">District</label>
+		    <input type="text" class="form-control" th:field="*{district}" required>
+		    <div class="valid-feedback">
+		      OK!
+		    </div>
+		  </div>
+
+		  
+		  <div class="col-md-3">
+		    <label for="description" class="form-label">Description</label>
+		    <input type="text" class="form-control" th:field="*{description}" required>
+		    <div class="valid-feedback">
+		      OK!
+		    </div>
+		  </div>
+		  
+		  
+		  <div class="col-md-3">
+		    <label for="cost" class="form-label">Cost</label>
+		    <input type="number" class="form-control" th:field="*{cost}" required>
+		    <div class="valid-feedback">
+		      OK!
+		    </div>
+		  </div>
+		  
+		  
+		  <div class="col-md-4">
+		    <label for="localowner" class="form-label">Local Owner</label>
+		    <select class="form-select" th:field="*{localowner}" required>
+		      <option selected disabled value="">Choose...</option>
+		      <option th:each="localowner : ${localowners}" th:value="${localowner.id}" th:text="${localowner.id}">...</option>
+		    </select>
+		    <div class="invalid-feedback">
+		      Please select a valid state.
+		    </div>
+		  </div>
+		  
+		  <div class="col-12" style="text-align: center;">
+		    <button class="btn btn-warning" type="submit"><i class="fas fa-save"></i> Update</button>
+		  </div>
+		</form>
+	  
+	  </div>
+	  <div class="card-footer text-muted">
+
+	  </div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
 
 </body>
 </html>
