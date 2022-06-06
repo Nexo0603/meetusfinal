@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface CrudService <T, ID> {
 	
-	JpaRepository<T, ID> getJpaRepository();
+JpaRepository<T, ID> getJpaRepository();
 	
 	@Transactional
 	default T create(T entity) throws Exception {
