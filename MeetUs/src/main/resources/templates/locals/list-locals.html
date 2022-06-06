@@ -45,8 +45,8 @@
 		      <td th:text="${local.cost}"></td>
 		      <td th:text="${local.localowner.id}"></td>
 		      <td>
-		      	<a class="btn btn-warning" href="#" role="button"> <i class="fas fa-edit"></i> </a>
-		      	<a class="btn btn-danger" href="#" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      	<a class="btn btn-warning" th:href="@{'/locals/' + ${local.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/locals/' + ${local.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
 		      </td>
 		    </tr>
 		  </tbody>
