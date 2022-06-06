@@ -1,4 +1,4 @@
-package pe.edu.upc.meetusparcial.services.impl;
+package pe.edu.upc.MeetUs.services.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,9 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upc.meetusparcial.models.entities.Appreciation;
-import pe.edu.upc.meetusparcial.models.repositories.AppreciationRepository;
-import pe.edu.upc.meetusparcial.services.AppreciationService;
+import pe.edu.upc.MeetUs.models.entities.Appreciation;
+import pe.edu.upc.MeetUs.models.repositories.AppreciationRepository;
+import pe.edu.upc.MeetUs.services.AppreciationService;
 
 
 @Service

@@ -1,4 +1,4 @@
-package pe.edu.upc.meetusparcial.services;
+package pe.edu.upc.MeetUs.services;
 
 import java.util.List;
 import java.util.Optional;
