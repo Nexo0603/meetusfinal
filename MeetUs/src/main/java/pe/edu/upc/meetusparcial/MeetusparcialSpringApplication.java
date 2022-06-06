@@ -1,12 +1,13 @@
-package pe.edu.upc.MeetUs;
+package pe.edu.upc.meetusparcial;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MeetUsApplication {
+public class MeetusparcialSpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MeetUsApplication.class, args);
+		SpringApplication.run(MeetusparcialSpringApplication.class, args);
 	}
+
 }
