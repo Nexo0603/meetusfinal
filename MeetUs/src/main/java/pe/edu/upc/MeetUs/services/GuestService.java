@@ -9,5 +9,6 @@ public interface GuestService extends CrudService<Guest, Integer> {
 	
 	List<Guest> findByName(String name) throws Exception;
 	Optional<Guest> findByDni(String dni) throws Exception;
+	List<Guest> getAll();
 
 }

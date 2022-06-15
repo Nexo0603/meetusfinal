@@ -52,4 +52,11 @@ public class GuestServiceImpl implements GuestService, Serializable {
 		return guestRepository.findByDni(dni);
 	}
 
+
+	@Override
+	public List<Guest> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
