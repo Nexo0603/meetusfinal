@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import pe.edu.upc.MeetUs.models.entities.Appreciation;
@@ -19,12 +20,6 @@ public class AppreciationServiceImpl implements AppreciationService, Serializabl
 	
 	@Autowired
 	private AppreciationRepository appreciationRepository;
-	
-	
-	@Override
-	public Appreciation save(Appreciation entity) throws Exception {
-		return appreciationRepository.save(entity);
-	}
 
 
 	@Override
@@ -39,13 +34,15 @@ public class AppreciationServiceImpl implements AppreciationService, Serializabl
 	}
 
 	@Override
-	public List<Appreciation> findAll() throws Exception {
-		return appreciationRepository.findAll();
-	}
-
-	@Override
 	public List<Appreciation> findByReview(String review) throws Exception {
 		return appreciationRepository.findByReview(review);
+	}
+
+
+	@Override
+	public JpaRepository<Appreciation, Integer> getJpaRepository() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

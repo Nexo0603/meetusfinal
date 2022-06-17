@@ -24,20 +24,6 @@ public class AppreciationController {
 	
 	@Autowired
 	private GuestService guestService; 
-
-	@GetMapping		//	/students
-	public String listAppreciations(Model model) {
-		
-		try {
-			List<Appreciation> appreciations = AppreciationService.getAll();
-			model.addAttribute("appreciations", appreciations);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return "appreciations/list-appreciations";
-	}
 	
 	@GetMapping("new")	//	/students/new
 	public String newAppreciation(Model model) {
@@ -51,17 +37,6 @@ public class AppreciationController {
 			e.printStackTrace();
 		}
 		return "students/new-student";
-	}
-	
-	@PostMapping("savenew")	//	/students/savenew
-	public String saveAppreciation(Model model, @ModelAttribute("appreciation") Appreciation appreciation) {
-		try {
-			Appreciation appreciationSaved = AppreciationService.create(appreciation);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "redirect:/appreciation";
 	}
 	
 }
