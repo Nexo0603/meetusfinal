@@ -53,17 +53,5 @@ public class AppreciationController {
 		}
 		return "students/new-student";
 	}
-	@PostMapping("savenew")	//	/students/savenew
-	public String saveAppreciation(Model model, @ModelAttribute("appreciation") Appreciation appreciation) {
-		try {
-			Appreciation appreciationSaved = AppreciationService.create(appreciation);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "redirect:/appreciation";
-	}
-	
-}
 	
 }
