@@ -1,8 +1,8 @@
-package pe.edu.upc.MeetUs.services;
+package pe.edu.upc.meetusparcial.services;
 
 import java.util.List;
 
-import pe.edu.upc.MeetUs.models.entities.Appreciation;
+import pe.edu.upc.meetusparcial.models.entities.Appreciation;
 
 public interface AppreciationService extends CrudService<Appreciation, Integer> {
 	

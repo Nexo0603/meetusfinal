@@ -1,9 +1,9 @@
-package pe.edu.upc.MeetUs.services;
+package pe.edu.upc.meetusparcial.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import pe.edu.upc.MeetUs.models.entities.Guest;
+import pe.edu.upc.meetusparcial.models.entities.Guest;
 
 public interface GuestService extends CrudService<Guest, Integer> {
 	

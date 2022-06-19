@@ -1,4 +1,4 @@
-package pe.edu.upc.MeetUs.models.entities;
+package pe.edu.upc.meetusparcial.models.entities;
 
 import java.util.ArrayList;
 import java.util.List;
