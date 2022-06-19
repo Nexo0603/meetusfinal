@@ -23,7 +23,7 @@ import pe.edu.upc.MeetUs.services.GuestService;
 public class AppreciationController {
 	
 	@Autowired
-	private GuestService guestService; 
+	private GuestService guestService;
 	
 	@GetMapping("new")	//	/students/new
 	public String newAppreciation(Model model) {
