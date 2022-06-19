@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>List Locals</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Locals</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Locals
+	  </div>
+	  <div class="card-body">
+	    
+	    <table class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Name</th>
+		      <th scope="col">District</th>
+		      <th scope="col">Description</th>
+		      <th scope="col">Cost</th>
+		      <th scope="col">Local Owner ID</th>
+		      <th scope="col"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="local : ${locals}">
+		      <th scope="row" th:text="${local.id}">1</th>
+		      <td th:text="${local.name}"></td>
+		      <td th:text="${local.district}"></td>
+		      <td th:text="${local.description}"></td>
+		      <td th:text="${local.cost}"></td>
+		      <td th:text="${local.localowner.id}"></td>
+		      <td>
+		      	<a class="btn btn-warning" th:href="@{'/locals/' + ${local.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/locals/' + ${local.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	    
+	  </div>
+	  <div class="card-footer text-muted">
+	    <a class="btn btn-primary" th:href="@{/locals/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	  </div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>
