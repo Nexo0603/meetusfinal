@@ -1,4 +1,4 @@
-package pe.edu.upc.meetusparcial.models.entities;
+package pe.edu.upc.MeetUs.models.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

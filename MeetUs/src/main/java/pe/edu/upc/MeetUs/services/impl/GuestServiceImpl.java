@@ -1,17 +1,16 @@
-package pe.edu.upc.meetusparcial.services.impl;
+package pe.edu.upc.MeetUs.services.impl;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import pe.edu.upc.meetusparcial.models.entities.Guest;
-import pe.edu.upc.meetusparcial.models.repositories.GuestRepository;
-import pe.edu.upc.meetusparcial.services.GuestService;
+import pe.edu.upc.MeetUs.models.entities.Guest;
+import pe.edu.upc.MeetUs.models.repository.GuestRepository;
+import pe.edu.upc.MeetUs.services.GuestService;
 
 @Service
 public class GuestServiceImpl implements GuestService, Serializable {
@@ -20,8 +19,20 @@ public class GuestServiceImpl implements GuestService, Serializable {
 
 	@Autowired
 	private GuestRepository guestRepository;
-	
 
+	@Transactional
+	@Override
+	public Guest save(Guest entity) throws Exception {
+		return guestRepository.save(entity);
+	}
+	
+	@Transactional
+	@Override
+	public Guest update(Guest entity) throws Exception {
+		return guestRepository.save(entity);
+	}
+
+	@Transactional
 	@Override
 	public void deleteById(Integer id) throws Exception {
 		guestRepository.deleteById(id);
@@ -34,6 +45,11 @@ public class GuestServiceImpl implements GuestService, Serializable {
 	}
 
 	@Override
+	public List<Guest> findAll() throws Exception {
+		return guestRepository.findAll();
+	}
+
+	@Override
 	public List<Guest> findByName(String name) throws Exception {
 		return guestRepository.findByName(name);
 	}
@@ -41,19 +57,6 @@ public class GuestServiceImpl implements GuestService, Serializable {
 	@Override
 	public Optional<Guest> findByDni(String dni) throws Exception {
 		return guestRepository.findByDni(dni);
-	}
-
-
-	@Override
-	public List<Guest> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public JpaRepository<Guest, Integer> getJpaRepository() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
