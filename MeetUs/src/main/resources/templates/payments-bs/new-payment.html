@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: frag-head">
 	<meta charset="ISO-8859-1">
 	<title>New Payment</title>
@@ -14,7 +14,7 @@
   	<nav aria-label="breadcrumb" class="margin-20">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item"><a th:href="@{/payments}">Payments</a></li>
+	    <li class="breadcrumb-item"><a th:href="@{/students-bs}">Payments</a></li>
 	    <li class="breadcrumb-item active" aria-current="page">New</li>
 	  </ol>
 	</nav>
@@ -25,8 +25,9 @@
 	  </div>
 	  <div class="card-body" style="text-align: left;">
 	  	
-	  	<form th:action="@{/payments/savenew}" th:object="${payment}" method="post" class="row g-3 needs-validation" novalidate>
-		  <div class="col-md-3">
+	  	<form th:action="@{/payments-bs/savenew}" th:object="${payment}" method="post" class="row g-3 needs-validation" novalidate>
+		 
+		 <div class="col-md-3">
 		    <label for="number" class="form-label">Numero de tarjeta</label>
 		    <input type="text" class="form-control" th:field="*{number}" required>
 		    <div class="valid-feedback">
@@ -76,6 +77,14 @@
 		      Please select a valid state.
 		    </div>
 		  </div>	
+		  
+		  <!--  <div class="col-md-2">
+		    <label for="urlToImage" class="form-label">urlToImage</label>
+		    <input type="text" class="form-control" th:field="*{urlToImage}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>-->
 		  
 		  <div class="col-12" style="text-align: center;">
 		    <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Pagar</button>
