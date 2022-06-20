@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: frag-head">
 	<meta charset="ISO-8859-1">
-	<title>New Payment</title>
+	<title>Edit Payment</title>
 </head>
 <body>
 
@@ -14,20 +14,21 @@
   	<nav aria-label="breadcrumb" class="margin-20">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item"><a th:href="@{/payments}">Payments</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">New</li>
+	    <li class="breadcrumb-item"><a th:href="@{/payments-bs}">Payments</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Edit</li>
 	  </ol>
 	</nav>
 	
 	<div class="card text-center margin-20">
 	  <div class="card-header">
-	    Pago
+	    Edit Payments
 	  </div>
 	  <div class="card-body" style="text-align: left;">
 	  	
-	  	<form th:action="@{/payments/savenew}" th:object="${payment}" method="post" class="row g-3 needs-validation" novalidate>
-		  <div class="col-md-3">
-		    <label for="number" class="form-label">Numero de tarjeta</label>
+	  	<form th:action="@{'/payments-bs/' + ${payment.id} + '/update'}" th:object="${payment}" method="post" class="row g-3 needs-validation" novalidate>
+		
+		   <div class="col-md-3">
+		    <label for="number" class="form-label">Numero de tarjetar</label>
 		    <input type="text" class="form-control" th:field="*{number}" required>
 		    <div class="valid-feedback">
 		      Looks good!
@@ -66,19 +67,16 @@
 		    </div>
 		  </div>
 		  
-		  <div class="col-md-4">
-		    <label for="organizer" class="form-label">Organizador</label>
-		    <select class="form-select" th:field="*{organizer}" required>
-		      <option selected disabled value="">Choose...</option>
-		      <option th:each="organizer : ${organizers}" th:value="${organizer.id}" th:text="${organizer.name}">...</option>
-		    </select>
-		    <div class="invalid-feedback">
-		      Please select a valid state.
+		  <!--  <div class="col-md-2">
+		    <label for="urlToImage" class="form-label">urlToImage</label>
+		    <input type="text" class="form-control" th:field="*{urlToImage}" required>
+		    <div class="valid-feedback">
+		      Looks good!
 		    </div>
-		  </div>	
+		  </div>-->
 		  
 		  <div class="col-12" style="text-align: center;">
-		    <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Pagar</button>
+		    <button class="btn btn-warning" type="submit"><i class="fas fa-save"></i> Update</button>
 		  </div>
 		</form>
 	  

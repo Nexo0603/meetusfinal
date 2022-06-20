@@ -32,7 +32,8 @@ public class Local {
 	@ManyToOne
 	@JoinColumn(name = "localowner_id")
 	private LocalOwner localowner;	//local_owner id
-
+	
+	
 	public Integer getId() {
 		return id;
 	}
