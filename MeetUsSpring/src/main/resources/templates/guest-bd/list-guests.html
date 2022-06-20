@@ -1,64 +1,40 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout/layout :: frag-head">
-	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css"
+	integrity="sha512-B/+HwQLNIGvEYJWB7Uagk+ax/F3LE1oBoZo2J2p0iMFQs2qQel80UikCcdHRyqw0+V27qnRW+wQJgn/G3XSAsw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>Hello, world!</title>
 </head>
-<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">Guests</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarColor01" aria-controls="navbarColor01"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-<header th:insert="layout/layout :: frag-header"></header>
-<main>
-	
-  <section>
-  
-  	<nav aria-label="breadcrumb" class="margin-20">
-	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">Students</li>
-	  </ol>
-	</nav>
-	
-	<div class="card text-center margin-20">
-	  <div class="card-header">
-	    Students
-	  </div>
-	  <div class="card-body">
-	    
-	    <table class="table table-striped">
-		  <thead>
-		    <tr>
-		      <th scope="col">#</th>
-		      <th scope="col">Last name</th>
-		      <th scope="col">First name</th>
-		      <th scope="col">Age</th>
-		      <th scope="col">Career</th>
-		      <th scope="col"></th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr th:each="student : ${students}">
-		      <th scope="row" th:text="${student.id}">1</th>
-		      <td th:text="${student.lastName}">Mark</td>
-		      <td th:text="${student.firstName}">Otto</td>
-		      <td th:text="${student.age}">@mdo</td>
-		      <td th:text="${student.career.name}">@mdo</td>
-		      <td>
-		      	<a class="btn btn-warning" th:href="@{'/students/' + ${student.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
-		      	<a class="btn btn-danger" th:href="@{'/students/' + ${student.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
-		      </td>
-		    </tr>
-		  </tbody>
-		</table>
-	    
-	  </div>
-	  <div class="card-footer text-muted">
-	    <a class="btn btn-primary" th:href="@{/students/new}" role="button"> <i class="fas fa-plus"></i> New </a>
-	  </div>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav me-auto">
+				<li class="nav-item"><a class="nav-link active" href="#">Home
+				</a></li>
+			</ul>
+		</div>
 	</div>
-  </section>
+</nav>
 
-</main>
-<footer th:replace="layout/layout :: frag-footer"></footer>	
-
-</body>
-</html>
+<div class="card-header">
+	    Guests
+</div>
+<p class="card-text"> 
+		        	The student is <span th:text="${guest.age}"></span> years old.
+		        	This student is registed in <span th:text="${guest.firstname}"></span> career. 
+		        </p>

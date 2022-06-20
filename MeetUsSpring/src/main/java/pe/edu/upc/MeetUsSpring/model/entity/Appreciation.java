@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "appreciations")
@@ -16,7 +15,7 @@ public class Appreciation {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "A_Id",columnDefinition = "NUMERIC(10)")
+	@Column(name = "A_Id",columnDefinition = "INTEGER(10)")
 	private Integer id;
 	
 	@Column(name = "A_Review",length = 50, nullable = false)
@@ -28,13 +27,6 @@ public class Appreciation {
 	@ManyToOne
 	@JoinColumn(name = "Guest_G_Id")
 	private Guest guest;
-	
-	@Transient
-	private Integer guestId;
-
-	public Appreciation() {
-		this.guestId = 0;
-	}
 
 	public Integer getId() {
 		return id;
@@ -63,22 +55,5 @@ public class Appreciation {
 	public Guest getGuest() {
 		return guest;
 	}
-
-	public void setGuest(Guest guest) {
-		this.guest = guest;
-		if (this.guest != null) {
-			this.guestId = this.guest.getId();
-		}
-	}
-
-	public Integer getGuestId() {
-		return guestId;
-	}
-
-	public void setGuestId(Integer guestId) {
-		this.guestId = guestId;
-	}
-	
-	
 
 }

@@ -18,11 +18,11 @@ import javax.persistence.Table;
 public class Guest {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "G_id",columnDefinition = "NUMERIC(10)")
+	@Column(name = "G_id",columnDefinition = "INTEGER(10)")
 	private Integer id;
 	
-	@Column(name = "G_name",length = 30, nullable = false)
-	private String name;
+	@Column(name = "G_firstname",length = 30, nullable = false)
+	private String firstname;
 	
 	@Column(name = "G_lastname",length = 30, nullable = false)
 	private String lastname;
@@ -51,12 +51,12 @@ public class Guest {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getfirstName() {
+		return firstname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setfirstName(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public String getLastname() {
