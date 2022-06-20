@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Students Business</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Students</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Students Business
+	  </div>
+	  <div class="card-body">
+	    
+	    <div class="row">
+		  <div th:each="student : ${students}" class="col-sm-3 margin-b-10">
+		    <div class="card">
+		      <div class="card-body">
+		        <h5 class="card-title" th:text="${student.lastName}">ln</h5>
+			    <h6 class="card-subtitle mb-2 text-muted" th:text="${student.firstName}">fn</h6>
+		        <p class="card-text"> 
+		        	The student is <span th:text="${student.age}"></span> years old.
+		        	This student is registed in <span th:text="${student.career.name}"></span> career. 
+		        </p>
+		        <a class="btn btn-warning" th:href="@{'/students-bs/' + ${student.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> Edit</a>
+		      	<a class="btn btn-danger" th:href="@{'/students-bs/' + ${student.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> Delete </a>
+		      </div>
+		    </div>
+		  </div>
+	    
+	  </div>
+	  <div class="card-footer text-muted">
+	    <a class="btn btn-primary" th:href="@{/students-bs/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	  </div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Edit Student</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item"><a th:href="@{/students-bs}">Students</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Edit Students
+	  </div>
+	  <div class="card-body" style="text-align: left;">
+	  	
+	  	<form th:action="@{'/students-bs/' + ${student.id} + '/update'}" th:object="${student}" method="post" class="row g-3 needs-validation" novalidate>
+		  <div class="col-md-3">
+		    <label for="lastName" class="form-label">Last name</label>
+		    <input type="text" class="form-control" th:field="*{lastName}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  <div class="col-md-3">
+		    <label for="firstName" class="form-label">First name</label>
+		    <input type="text" class="form-control" th:field="*{firstName}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  
+		  <div class="col-md-2">
+		    <label for="age" class="form-label">Age</label>
+		    <input type="number" class="form-control" th:field="*{age}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  
+		  <div class="col-md-4">
+		    <label for="career" class="form-label">Career</label>
+		    <select class="form-select" th:field="*{career}" required>
+		      <option selected disabled value="">Choose...</option>
+		      <option th:each="career : ${careers}" th:value="${career.id}" th:text="${career.name}">...</option>
+		    </select>
+		    <div class="invalid-feedback">
+		      Please select a valid state.
+		    </div>
+		  </div>
+		  
+		  <div class="col-12" style="text-align: center;">
+		    <button class="btn btn-warning" type="submit"><i class="fas fa-save"></i> Update</button>
+		  </div>
+		</form>
+	  
+	  </div>
+	  <div class="card-footer text-muted">
+
+	  </div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>

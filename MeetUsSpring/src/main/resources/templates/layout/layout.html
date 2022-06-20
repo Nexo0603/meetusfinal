@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="frag-head">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+  <link th:href="@{/css/fontawesome.min.css}" rel="stylesheet" >
+  <link th:href="@{/css/solid.min.css}" rel="stylesheet" > 
+  <link th:href="@{/css/style.css}" rel="stylesheet" >
+  <title>University</title>
+</head>
+<body>
+
+<header th:fragment="frag-header">	<!-- Crear un fragmento -->
+	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #7952b3;" >
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="#"><i class="fas fa-chalkboard-teacher"></i> University</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_TEACHER')">
+	          <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-user-graduate"></i> Courses</a>
+	        </li>
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_TEACHER')">
+	          <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-user-graduate"></i> Students</a>
+	        </li>
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_TEACHER')">
+	          <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-user-graduate"></i> Grades</a>
+	        </li>
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_STUDENT')">
+	          <a class="nav-link" aria-current="page" href="#"><i class="fas fa-id-card"></i> Courses</a>
+	        </li>
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_STUDENT')">
+	          <a class="nav-link" aria-current="page" href="#"><i class="fas fa-school"></i> Enrollment</a>
+	        </li>
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_STUDENT')">
+	          <a class="nav-link" aria-current="page" href="#"><i class="fas fa-school"></i> Withdraw</a>
+	        </li>
+	        <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMINISTRATOR')">
+	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            CRUD
+	          </a>
+	          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+	            <li><a class="dropdown-item" href="#"><i class="fas fa-user-graduate"></i> Students</a></li>
+	            <li><a class="dropdown-item" href="#"><i class="fas fa-user-graduate"></i> Teachers</a></li>
+	            <li><hr class="dropdown-divider"></li>
+	            <li><a class="dropdown-item" href="#"><i class="fas fa-id-card"></i>Careers</a></li>
+	            <li><a class="dropdown-item" href="#"><i class="fas fa-user-graduate"></i> Course</a></li>
+	            <li><a class="dropdown-item" href="#"><i class="fas fa-school"></i> Campus</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	      <form class="d-flex" style="margin-right: 20px;">
+	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+	        <button class="btn btn-warning" type="submit"><i class="fas fa-search"></i></button>
+	      </form>
+	      
+	      <a sec:authorize="isAnonymous()" class="btn btn-outline-warning" th:href="@{/login}" role="button"><i class="fas fa-user"></i> Sign-in</a>
+	      
+	      <div class="dropdown" sec:authorize="isAuthenticated()">
+			  <a class="btn btn-outline-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+			    <i class="fas fa-user-circle"></i> <span sec:authentication="name">Username</span>
+			  </a>			
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+			    <li><a class="dropdown-item" href="#">View Profile</a></li>
+			    <li><a class="dropdown-item" href="#">Change Password</a></li>
+			    <li><hr class="dropdown-divider"></li>
+			    <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+			  </ul>
+		  </div>	      
+	    </div>
+	  </div>
+	</nav>
+</header>
+<main>
+	<section>
+	
+	</section>
+</main>
+<footer th:fragment="frag-footer">
+	<p>University</p>
+	<script th:src="@{/js/bootstrap.bundle.min.js}" ></script>
+</footer>	
+  
+</body>
+</html>

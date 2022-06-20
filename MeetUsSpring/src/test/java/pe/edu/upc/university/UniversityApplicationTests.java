@@ -1,10 +1,10 @@
-package pe.edu.upc.MeetUs;
+package pe.edu.upc.university;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MeetUsApplicationTests {
+class UniversityApplicationTests {
 
 	@Test
 	void contextLoads() {
