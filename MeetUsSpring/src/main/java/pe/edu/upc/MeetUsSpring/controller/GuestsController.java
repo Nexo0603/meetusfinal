@@ -19,7 +19,7 @@ import pe.edu.upc.MeetUsSpring.model.entity.Appreciation;
 import pe.edu.upc.MeetUsSpring.model.entity.Guest;
 
 @Controller
-@RequestMapping("/guests-bd")	// GET y POST
+@RequestMapping("/guests-bd")
 @SessionAttributes("{guest}")
 public class GuestsController {
 	
@@ -29,7 +29,7 @@ public class GuestsController {
 	@Autowired
 	private AppreciationService appreciationService; 
 
-	@GetMapping		//	/students
+	@GetMapping		//	/guests
 	public String listGuests(Model model) {
 		
 		try {
@@ -42,7 +42,7 @@ public class GuestsController {
 		return "guests-bd/list-guests";
 	}
 	
-	@GetMapping("new")	//	/students/new
+	@GetMapping("new")	//	/guests/new
 	public String newStudent(Model model) {
 		Guest guest = new Guest();
 		model.addAttribute("guest", guest);
@@ -53,11 +53,11 @@ public class GuestsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "guests-bd/new-student";
+		return "guests-bd/new-guest";
 	}
 	
-	@PostMapping("savenew")	//	/students/savenew
-	public String saveGuest(Model model, @ModelAttribute("student") Guest guest) {
+	@PostMapping("savenew")	//	/guests/savenew
+	public String saveGuest(Model model, @ModelAttribute("guest") Guest guest) {
 		try {
 			Guest guestSaved = guestService.create(guest);
 		} catch (Exception e) {
@@ -67,7 +67,7 @@ public class GuestsController {
 		return "redirect:/guests-bd";
 	}
 	
-	@GetMapping("{id}/edit")	//	/students/1/edit
+	@GetMapping("{id}/edit")	//	/guests/1/edit
 	public String editGuest(Model model, @PathVariable("id") Integer id) {				
 		try {
 			if (guestService.existsById(id)) {
@@ -83,11 +83,11 @@ public class GuestsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "guests-bd/edit-student";
+		return "guests-bd/edit-guest";
 	}
 	
-	@PostMapping("{id}/update")	//	/students/1/update
-	public String updateGuest(Model model, @ModelAttribute("student") Guest guest, 
+	@PostMapping("{id}/update")	//	/guests/1/update
+	public String updateGuest(Model model, @ModelAttribute("guest") Guest guest, 
 			@PathVariable("id") Integer id) {
 		try {
 			if (guestService.existsById(id)) {
@@ -103,7 +103,7 @@ public class GuestsController {
 		return "redirect:/guests-bd";
 	}
 	
-	@GetMapping("{id}/del")	//	/students/1/del
+	@GetMapping("{id}/del")	//	/guests/1/del
 	public String deleteGuest(Model model, @PathVariable("id") Integer id) {
 		try {
 			if (guestService.existsById(id)) {

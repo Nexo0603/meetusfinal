@@ -19,13 +19,11 @@ import pe.edu.upc.MeetUsSpring.model.entity.Appreciation;
 import pe.edu.upc.MeetUsSpring.model.entity.Guest;
 
 @Controller
-@RequestMapping("/appreciations-bd")	// GET y POST
+@RequestMapping("/appreciations-bd")
 @SessionAttributes("{appreciation}")
 public class AppreciationsController {
-	
 	@Autowired
 	private GuestService guestService;
-	
 	@Autowired
 	private AppreciationService appreciationService; 
 
