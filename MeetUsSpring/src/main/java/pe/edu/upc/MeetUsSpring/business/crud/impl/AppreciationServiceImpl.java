@@ -22,8 +22,8 @@ public class AppreciationServiceImpl implements AppreciationService {
 	}
 
 	@Override
-	public List<Appreciation> findByLastNameAndFirstName(String lastName, String firstName) throws Exception {
-		return this.appreciationRepository.findByLastNameAndFirstName(lastName, firstName);
+	public List<Appreciation> findByReview(String review) throws Exception {
+		return this.appreciationRepository.findByReview(review);
 	}
 
 }

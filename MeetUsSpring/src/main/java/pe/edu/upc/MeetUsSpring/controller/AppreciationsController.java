@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.MeetUsSpring.business.crud.AppreciationService;
 import pe.edu.upc.MeetUsSpring.business.crud.GuestService;
+import pe.edu.upc.MeetUsSpring.model.entity.Appreciation;
 import pe.edu.upc.MeetUsSpring.model.entity.Guest;
 
 @Controller
-@RequestMapping("/appreciations")	// GET y POST
-@SessionAttributes("{appreciations}")
+@RequestMapping("/appreciations-bd")	// GET y POST
+@SessionAttributes("{appreciation}")
 public class AppreciationsController {
 	
 	@Autowired
@@ -28,94 +29,95 @@ public class AppreciationsController {
 	@Autowired
 	private AppreciationService appreciationService; 
 
-	@GetMapping		//	/students
-	public String listGuests(Model model) {
+	@GetMapping		//	/appreciations
+	public String listAppreciations(Model model) {
 		
+		try {
+			List<Appreciation> appreciations = appreciationService.getAll();
+			model.addAttribute("appreciations", appreciations);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "appreciations/list-appreciation";
+	}
+	
+	@GetMapping("new")	//	/appreciations/new
+	public String newAppreciation(Model model) {
+		Appreciation appreciation = new Appreciation();
+		model.addAttribute("appreciation", appreciation);
 		try {
 			List<Guest> guests = guestService.getAll();
-			model.addAttribute("g", guests);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return "students-bs/list-students";
-	}
-	
-	@GetMapping("new")	//	/students/new
-	public String newStudent(Model model) {
-		Student student = new Student();
-		model.addAttribute("student", student);
-		try {
-			List<Career> careers = careerService.getAll();
-			model.addAttribute("careers", careers);
+			model.addAttribute("guests", guests);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "students-bs/new-student";
+		return "appreciations-bd/new-appreciation";
 	}
 	
-	@PostMapping("savenew")	//	/students/savenew
-	public String saveStudent(Model model, @ModelAttribute("student") Student student) {
+	@PostMapping("savenew")	//	/appreciations/savenew
+	public String saveAppreciation(Model model, @ModelAttribute("appreciation") Appreciation appreciation) {
 		try {
-			Student studentSaved = studentService.create(student);
+			Appreciation AppreciationSaved = appreciationService.create(appreciation);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/students-bs";
+		return "redirect:/appreciations";
 	}
 	
-	@GetMapping("{id}/edit")	//	/students/1/edit
-	public String editStudent(Model model, @PathVariable("id") Integer id) {				
+	@GetMapping("{id}/edit")	//	/appreciations/1/edit
+	public String editAppreciation(Model model, @PathVariable("id") Integer id) {				
 		try {
-			if (studentService.existsById(id)) {
-				Optional<Student> optional = studentService.findById(id);
-				model.addAttribute("student", optional.get());
-				List<Career> careers = careerService.getAll();
-				model.addAttribute("careers", careers);
+			if (appreciationService.existsById(id)) {
+				Optional<Appreciation> optional = appreciationService.findById(id);
+				model.addAttribute("appreciation", optional.get());
+				List<Guest> guests = guestService.getAll();
+				model.addAttribute("guests", guests);
 			} else {
-				return "redirect:/students-bs";
+				return "redirect:/appreciation-bd";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "students-bs/edit-student";
+		return "appreciation-bd/edit-appreciation";
 	}
 	
-	@PostMapping("{id}/update")	//	/students/1/update
-	public String updateStudent(Model model, @ModelAttribute("student") Student student, 
+	@PostMapping("{id}/update")	//	/appreciations/1/update
+	public String updateAppreciation(Model model, @ModelAttribute("appreciation") Appreciation appreciation, 
 			@PathVariable("id") Integer id) {
 		try {
-			if (studentService.existsById(id)) {
-				studentService.update(student);
+			if (appreciationService.existsById(id)) {
+				appreciationService.update(appreciation);
 			} else {
-				return "redirect:/students-bs";
+				return "redirect:/appreciation-bd";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/students-bs";
+		return "redirect:/appreciation-bd";
 	}
 	
-	@GetMapping("{id}/del")	//	/students/1/del
-	public String deleteStudent(Model model, @PathVariable("id") Integer id) {
+	@GetMapping("{id}/del")	//	/appreciations/1/del
+	public String deleteAppreciation(Model model, @PathVariable("id") Integer id) {
 		try {
-			if (studentService.existsById(id)) {
-				studentService.deleteById(id);
+			if (appreciationService.existsById(id)) {
+				appreciationService.deleteById(id);
 			} else {
-				return "redirect:/students-bs";
+				return "redirect:/appreciation-bd";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/students-bs";
+		return "redirect:/appreciation-bd";
 	}
 	
 	

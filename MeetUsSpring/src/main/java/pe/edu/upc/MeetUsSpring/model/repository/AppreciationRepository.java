@@ -9,6 +9,6 @@ import pe.edu.upc.MeetUsSpring.model.entity.Appreciation;
 
 @Repository
 public interface AppreciationRepository extends JpaRepository<Appreciation, Integer> {
-	List<Appreciation> findByLastNameAndFirstName(String lastName, String firstName) throws Exception;
+	List<Appreciation> findByReview(String review) throws Exception;
 
 }
