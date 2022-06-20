@@ -29,6 +29,9 @@ public class Local {
 	@Column(name = "l_cost", nullable = false)
 	private float cost;
 	
+	@Column(name = "l_urltoimage", length = 200, nullable = true)
+	private String UrlToImage;
+	
 	@ManyToOne
 	@JoinColumn(name = "localowner_id")
 	private LocalOwner localowner;	//local_owner id
@@ -81,5 +84,12 @@ public class Local {
 		this.localowner = localowner;
 	}
 	
+	public String getUrlToImage() {
+		return UrlToImage;
+	}
+
+	public void setUrlToImage(String urlToImage) {
+		UrlToImage = urlToImage;
+	}
 	
 }

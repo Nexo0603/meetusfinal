@@ -26,8 +26,8 @@
 	    
 	    <div class="row row-cols-1 row-cols-md-2 g-4">
   <div th:each="local : ${locals}" class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+    <div class="card" style="display:flex">
+      <div style="justify-content:center"><img th:src="${local.UrlToImage}" class="card-img-top" alt="..." style="width: 600px; height: 400px"></div>
       <div class="card-body">
         <h5 class="card-title" th:text="${local.name}">n</h5>
         <p class="card-text"></p>

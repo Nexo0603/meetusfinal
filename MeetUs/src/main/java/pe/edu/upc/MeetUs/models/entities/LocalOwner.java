@@ -39,6 +39,9 @@ public class LocalOwner {
 	@Column(name = "lo_email", length = 30, nullable = false)
 	private String email;
 	
+	@Column(name = "lo_urltoimage", length = 200, nullable = true)
+	private String UrlToImage;
+	
 	@OneToMany(mappedBy = "localowner")
 	private List<Local> locals;
 	
@@ -108,6 +111,14 @@ public class LocalOwner {
 
 	public void setLocals(List<Local> locals) {
 		this.locals = locals;
+	}
+	
+	public String getUrlToImage() {
+		return UrlToImage;
+	}
+
+	public void setUrlToImage(String urlToImage) {
+		UrlToImage = urlToImage;
 	}
 	
 }
