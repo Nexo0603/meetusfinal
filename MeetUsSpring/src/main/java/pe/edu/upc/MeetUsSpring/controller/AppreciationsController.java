@@ -13,30 +13,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import pe.edu.upc.MeetUsSpring.business.crud.CareerService;
-import pe.edu.upc.MeetUsSpring.business.crud.StudentService;
-import pe.edu.upc.MeetUsSpring.model.entity.Career;
-import pe.edu.upc.MeetUsSpring.model.entity.Student;
+import pe.edu.upc.MeetUsSpring.business.crud.AppreciationService;
+import pe.edu.upc.MeetUsSpring.business.crud.GuestService;
+import pe.edu.upc.MeetUsSpring.model.entity.Guest;
 
 @Controller
-@RequestMapping("/students-bs")	// GET y POST
-@SessionAttributes("{student}")
-public class StudentBsController {
+@RequestMapping("/appreciations")	// GET y POST
+@SessionAttributes("{appreciations}")
+public class AppreciationsController {
 	
 	@Autowired
-	private StudentService studentService;
+	private GuestService guestService;
 	
 	@Autowired
-	private CareerService careerService; 
+	private AppreciationService appreciationService; 
 
 	@GetMapping		//	/students
-	public String listStudents(Model model) {
+	public String listGuests(Model model) {
 		
 		try {
-			List<Student> students = studentService.getAll();
-			model.addAttribute("students", students);
+			List<Guest> guests = guestService.getAll();
+			model.addAttribute("g", guests);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
