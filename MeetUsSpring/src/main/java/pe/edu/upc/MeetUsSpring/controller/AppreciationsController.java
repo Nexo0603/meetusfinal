@@ -19,7 +19,7 @@ import pe.edu.upc.MeetUsSpring.model.entity.Appreciation;
 import pe.edu.upc.MeetUsSpring.model.entity.Guest;
 
 @Controller
-@RequestMapping("/appreciations-bd")
+@RequestMapping("/appreciations")
 @SessionAttributes("{appreciation}")
 public class AppreciationsController {
 	@Autowired
@@ -52,7 +52,7 @@ public class AppreciationsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "appreciations-bd/new-appreciation";
+		return "appreciations/new-appreciation";
 	}
 	
 	@PostMapping("savenew")	//	/appreciations/savenew
@@ -75,14 +75,14 @@ public class AppreciationsController {
 				List<Guest> guests = guestService.getAll();
 				model.addAttribute("guests", guests);
 			} else {
-				return "redirect:/appreciation-bd";
+				return "redirect:/appreciations";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "appreciation-bd/edit-appreciation";
+		return "appreciations/edit-appreciations";
 	}
 	
 	@PostMapping("{id}/update")	//	/appreciations/1/update
@@ -92,14 +92,14 @@ public class AppreciationsController {
 			if (appreciationService.existsById(id)) {
 				appreciationService.update(appreciation);
 			} else {
-				return "redirect:/appreciation-bd";
+				return "redirect:/appreciations";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/appreciation-bd";
+		return "redirect:/appreciations";
 	}
 	
 	@GetMapping("{id}/del")	//	/appreciations/1/del
@@ -108,14 +108,14 @@ public class AppreciationsController {
 			if (appreciationService.existsById(id)) {
 				appreciationService.deleteById(id);
 			} else {
-				return "redirect:/appreciation-bd";
+				return "redirect:/appreciations";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/appreciation-bd";
+		return "redirect:/appreciations";
 	}
 	
 	

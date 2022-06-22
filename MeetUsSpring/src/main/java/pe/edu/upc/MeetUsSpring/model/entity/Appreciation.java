@@ -5,17 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "appreciations")
+@Table(name = "appreciations", indexes = {@Index(columnList = "A_Review", name = "Appreciation_index_A_Review" )})
 public class Appreciation {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "A_Id",columnDefinition = "INTEGER(10)")
 	private Integer id;
 	
 	@Column(name = "A_Review",length = 50, nullable = false)

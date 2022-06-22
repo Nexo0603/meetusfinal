@@ -9,5 +9,5 @@ import pe.edu.upc.MeetUsSpring.model.entity.Guest;
 
 @Repository
 public interface GuestRepository extends JpaRepository<Guest, Integer> {
-	List<Guest> findByLastNameAndFirstName(String lastName, String firstName) throws Exception;
+	List<Guest> findByLastNameAndFirstName(String lastname, String firstname) throws Exception;
 }

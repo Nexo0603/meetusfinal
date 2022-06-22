@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>List Appreciations</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Appreciations</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Appreciations
+	  </div>
+	  <div class="card-body">
+	    
+	    <table class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Review</th>
+		      <th scope="col">Puntuation</th>
+		      <th scope="col"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="Appreciation : ${Appreciations}">
+		      <th scope="row" th:text="${Appreciation.id}">1</th>
+		      <td th:text="${Appreciation.Review}"></td>
+		      <td th:text="${Appreciation.Puntuation}"></td>
+		      <td>
+		      	<a class="btn btn-warning" th:href="@{'/Appreciations/' + ${Appreciation.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/Appreciations/' + ${Appreciation.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	    
+	  </div>
+	  <div class="card-footer text-muted">
+	    <a class="btn btn-primary" th:href="@{/Appreciations/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	  </div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>

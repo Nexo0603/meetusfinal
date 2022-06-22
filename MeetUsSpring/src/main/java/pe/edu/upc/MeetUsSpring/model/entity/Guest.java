@@ -9,16 +9,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "guests")
+@Table(name = "guests", indexes = {@Index(columnList = "G_lastname, G_firstname", name = "G_index_G_lastname_G_firstname" )})
 public class Guest {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "G_id",columnDefinition = "INTEGER(10)")
 	private Integer id;
 	
 	@Column(name = "G_firstname",length = 30, nullable = false)

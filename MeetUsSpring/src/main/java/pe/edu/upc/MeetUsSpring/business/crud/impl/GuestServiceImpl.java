@@ -1,9 +1,16 @@
 package pe.edu.upc.MeetUsSpring.business.crud.impl;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 import org.springframework.stereotype.Service;
  
 import pe.edu.upc.MeetUsSpring.business.crud.GuestService;
@@ -22,8 +29,8 @@ public class GuestServiceImpl implements GuestService{
 	}
 
 	@Override
-	public List<Guest> findByLastNameAndFirstName(String lastName, String firstName) throws Exception {
-		return this.guestRepository.findByLastNameAndFirstName(lastName, firstName);
+	public List<Guest> findByLastNameAndFirstName(String lastname, String firstname) throws Exception {
+		return this.guestRepository.findByLastNameAndFirstName(lastname, firstname);
 	}
 
 }
