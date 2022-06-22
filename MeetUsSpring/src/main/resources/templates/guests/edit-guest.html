@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: frag-head">
 	<meta charset="ISO-8859-1">
-	<title>Edit Student</title>
+	<title>Edit Guests</title>
 </head>
 <body>
 
@@ -14,49 +14,51 @@
   	<nav aria-label="breadcrumb" class="margin-20">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item"><a th:href="@{/students}">Students</a></li>
+	    <li class="breadcrumb-item"><a th:href="@{/Guest}">Guests</a></li>
 	    <li class="breadcrumb-item active" aria-current="page">Edit</li>
 	  </ol>
 	</nav>
 	
 	<div class="card text-center margin-20">
 	  <div class="card-header">
-	    Edit Students
+	    Edit Guest
 	  </div>
 	  <div class="card-body" style="text-align: left;">
 	  	
-	  	<form th:action="@{'/students/' + ${student.id} + '/update'}" th:object="${student}" method="post" class="row g-3 needs-validation" novalidate>
+	  	<form th:action="@{'/Guest/' + ${Guest.id} + '/update'}" th:object="${Guest}" method="post" class="row g-3 needs-validation" novalidate>
 		  <div class="col-md-3">
-		    <label for="lastName" class="form-label">Last name</label>
+		    <label for="name" class="form-label">First Name</label>
+		    <input type="text" class="form-control" th:field="*{name}" required>
+		    <div class="valid-feedback">
+		      OK!
+		    </div>
+		  </div>
+		  <div class="col-md-3">
+		    <label for="lastName" class="form-label">Last Name</label>
 		    <input type="text" class="form-control" th:field="*{lastName}" required>
 		    <div class="valid-feedback">
-		      Looks good!
+		      OK!
 		    </div>
 		  </div>
-		  <div class="col-md-3">
-		    <label for="firstName" class="form-label">First name</label>
-		    <input type="text" class="form-control" th:field="*{firstName}" required>
-		    <div class="valid-feedback">
-		      Looks good!
-		    </div>
-		  </div>
-		  
 		  <div class="col-md-2">
-		    <label for="age" class="form-label">Age</label>
-		    <input type="number" class="form-control" th:field="*{age}" required>
+		    <label for="phone" class="form-label">Phone</label>
+		    <input type="number" class="form-control" th:field="*{phone}" required>
 		    <div class="valid-feedback">
-		      Looks good!
+		      OK!
+		    </div>
+		  </div>	  
+		  <div class="col-md-2">
+		    <label for="dni" class="form-label">DNI</label>
+		    <input type="number" class="form-control" th:field="*{dni}" required>
+		    <div class="valid-feedback">
+		      OK!
 		    </div>
 		  </div>
-		  
-		  <div class="col-md-4">
-		    <label for="career" class="form-label">Career</label>
-		    <select class="form-select" th:field="*{career}" required>
-		      <option selected disabled value="">Choose...</option>
-		      <option th:each="career : ${careers}" th:value="${career.id}" th:text="${career.name}">...</option>
-		    </select>
-		    <div class="invalid-feedback">
-		      Please select a valid state.
+		  <div class="col-md-2">
+		    <label for="address" class="form-label">Address</label>
+		    <input type="text" class="form-control" th:field="*{address}" required>
+		    <div class="valid-feedback">
+		      OK!
 		    </div>
 		  </div>
 		  

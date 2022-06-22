@@ -18,11 +18,12 @@ import pe.edu.upc.MeetUsSpring.business.crud.GuestService;
 import pe.edu.upc.MeetUsSpring.model.entity.Appreciation;
 import pe.edu.upc.MeetUsSpring.model.entity.Guest;
 
+
 @Controller
-@RequestMapping("/guests-bd")
+@RequestMapping("/guests-bs")	// GET y POST
 @SessionAttributes("{guest}")
-public class GuestsController {
-	
+public class GuestBsController {
+
 	@Autowired
 	private GuestService guestService;
 	
@@ -39,7 +40,7 @@ public class GuestsController {
 			e.printStackTrace();
 		}
 		
-		return "guests/list-guests";
+		return "guests-bd/list-guests";
 	}
 	
 	@GetMapping("new")	//	/guests/new
@@ -53,7 +54,7 @@ public class GuestsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "guests/new-guest";
+		return "guests-bd/new-guest";
 	}
 	
 	@PostMapping("savenew")	//	/guests/savenew
@@ -64,7 +65,7 @@ public class GuestsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/guests";
+		return "redirect:/guests-bd";
 	}
 	
 	@GetMapping("{id}/edit")	//	/guests/1/edit
@@ -76,14 +77,14 @@ public class GuestsController {
 				List<Appreciation> appreciation = appreciationService.getAll();
 				model.addAttribute("appreciation", appreciation);
 			} else {
-				return "redirect:/guests";
+				return "redirect:/guests-bd";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "guests/edit-guest";
+		return "guests-bd/edit-guest";
 	}
 	
 	@PostMapping("{id}/update")	//	/guests/1/update
@@ -93,14 +94,14 @@ public class GuestsController {
 			if (guestService.existsById(id)) {
 				guestService.update(guest);
 			} else {
-				return "redirect:/guests";
+				return "redirect:/guests-bd";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/guests";
+		return "redirect:/guests-bd";
 	}
 	
 	@GetMapping("{id}/del")	//	/guests/1/del
@@ -109,14 +110,14 @@ public class GuestsController {
 			if (guestService.existsById(id)) {
 				guestService.deleteById(id);
 			} else {
-				return "redirect:/guests";
+				return "redirect:/guests-bd";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/guests";
+		return "redirect:/guests-bd";
 	}
 	
 	
