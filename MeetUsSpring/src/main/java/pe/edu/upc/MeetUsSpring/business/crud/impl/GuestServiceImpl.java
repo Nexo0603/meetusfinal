@@ -17,7 +17,7 @@ public class GuestServiceImpl implements GuestService{
 	private GuestRepository guestRepository;
 	
 	@Override
-	public JpaRepository<Guest, String> getJpaRepository() {
+	public JpaRepository<Guest, Integer> getJpaRepository() {
 		return this.guestRepository;
 	}
 

@@ -1,56 +1,71 @@
 <!doctype html>
-<html lang="en">
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css"
-	integrity="sha512-B/+HwQLNIGvEYJWB7Uagk+ax/F3LE1oBoZo2J2p0iMFQs2qQel80UikCcdHRyqw0+V27qnRW+wQJgn/G3XSAsw=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<title>Hello, world!</title>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>New Appreciations</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="#">Guests</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-			data-bs-target="#navbarColor01" aria-controls="navbarColor01"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+<body>
 
-		<div class="collapse navbar-collapse" id="navbarColor01">
-			<ul class="navbar-nav me-auto">
-				<li class="nav-item"><a class="nav-link active" href="#">Home
-				</a></li>
-			</ul>
-		</div>
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item"><a th:href="@{/appreciations-bs}">Appreciations</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">New</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Appreciations
+	  </div>
+	  <div class="card-body" style="text-align: left;">
+	  	
+	  	<form th:action="@{/appreciation-bs/savenew}" th:object="${appreciation}" method="post" class="row g-3 needs-validation" novalidate>
+		  <div class="col-md-3">
+		    <label for="review" class="form-label">Review</label>
+		    <input type="text" class="form-control" th:field="*{review}" required>
+		    <div class="valid-feedback">
+		      OK!
+		    </div>
+		  </div>
+		  <div class="col-md-3">
+		    <label for="puntuation" class="form-label">Puntuacion</label>
+		    <input type="text" class="form-control" th:field="*{puntuation}" required>
+		    <div class="valid-feedback">
+		      OK!
+		    </div>
+		  </div>
+		  
+		  <div class="col-md-4">
+		    <label for="guest" class="form-label">Guest</label>
+		    <select class="form-select" th:field="*{guest}" required>
+		      <option selected disabled value="">Choose...</option>
+		      <option th:each="guest : ${guests}" th:value="${guest.id}" th:text="${guest.id}">...</option>
+		    </select>
+		    <div class="invalid-feedback">
+		      Please select a valid state.
+		    </div>
+		  </div>
+		   
+		  <div class="col-12" style="text-align: center;">
+		    <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save</button>
+		  </div>
+		</form>
+	  
+	  </div>
+	  <div class="card-footer text-muted">
+
+	  </div>
 	</div>
-</nav>
-<h3 class="text-Left pt-3 pb-3">Invitados de la reunión</h3>
-<p class="lead">Ingrese los datos que se le indican a continuación:</p>
-<div class="form-group">
-	<label class="col-form-label mt-4" for="inputDefault">Id de la apreciación:</label> <input type="text" class="form-control"
-		placeholder="Ingrese el nombre del invitado" id="inputDefault">
-</div>
-<div class="form-group">
-	<label class="col-form-label mt-1" for="inputDefault">Review:</label> <input type="text" class="form-control"
-		placeholder="Ingrese el apellido del invitado" id="inputDefault">
-</div>
+  </section>
 
-<div class="form-group">
-      <label for="exampleSelect1" class="form-label mt-4">Puntuación:</label>
-      <select class="form-select" id="exampleSelect1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
 
-
-<button type="button" class="btn btn-primary">Ingresar</button>
+</body>
+</html>

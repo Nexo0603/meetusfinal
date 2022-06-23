@@ -58,7 +58,7 @@ public class AppreciationBsController {
 	@PostMapping("savenew")	//	/appreciations/savenew
 	public String saveAppreciation(Model model, @ModelAttribute("appreciation") Appreciation appreciation) {
 		try {
-			Appreciation AppreciationSaved = appreciationService.create(appreciation);
+			Appreciation appreciationSaved = appreciationService.create(appreciation);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.OneToMany;
@@ -15,9 +17,9 @@ import javax.persistence.Table;
 @Table(name = "guests", indexes = {@Index(columnList = "G_lastname, G_firstname", name = "G_index_G_lastname_G_firstname" )})
 public class Guest {
 	@Id
-	@Column(name = "guest_id", length = 3)
-	private String id;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
 	@Column(name = "G_firstname",length = 30, nullable = false)
 	private String firstName;
 	
@@ -50,12 +52,12 @@ public class Guest {
 	public Guest() {
 		appreciations = new ArrayList<>();
 	}
-
-	public String getId() {
+	
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

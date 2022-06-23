@@ -27,13 +27,7 @@
 	  	
 	  	<form th:action="@{/guests-bs/savenew}" th:object="${guest}" method="post" class="row g-3 needs-validation" novalidate>
 		  
-		  <div class="col-md-3">
-		    <label for="id" class="form-label">ID</label>
-		    <input type="text" class="form-control" th:field="*{id}" required>
-		    <div class="valid-feedback">
-		      Looks good!
-		    </div>
-		  </div>
+
 		  
 		  <div class="col-md-3">
 		    <label for="firstName" class="form-label">Nombre</label>

@@ -18,15 +18,12 @@ import pe.edu.upc.MeetUsSpring.business.crud.GuestService;
 import pe.edu.upc.MeetUsSpring.model.entity.Appreciation;
 import pe.edu.upc.MeetUsSpring.model.entity.Guest;
 
-
 @Controller
 @RequestMapping("/guests-bs")	// GET y POST
 @SessionAttributes("{guest}")
 public class GuestBsController {
-
 	@Autowired
 	private GuestService guestService;
-	
 	@Autowired
 	private AppreciationService appreciationService; 
 
@@ -37,6 +34,7 @@ public class GuestBsController {
 			List<Guest> guests = guestService.getAll();
 			model.addAttribute("guests", guests);
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -69,7 +67,7 @@ public class GuestBsController {
 	}
 	
 	@GetMapping("{id}/edit")	//	/guests/1/edit
-	public String editGuest(Model model, @PathVariable("id") String id) {				
+	public String editGuest(Model model, @PathVariable("id") Integer id) {				
 		try {
 			if (guestService.existsById(id)) {
 				Optional<Guest> optional = guestService.findById(id);
@@ -89,7 +87,7 @@ public class GuestBsController {
 	
 	@PostMapping("{id}/update")	//	/guests/1/update
 	public String updateGuest(Model model, @ModelAttribute("guest") Guest guest, 
-			@PathVariable("id") String id) {
+			@PathVariable("id") Integer id) {
 		try {
 			if (guestService.existsById(id)) {
 				guestService.update(guest);
@@ -105,7 +103,7 @@ public class GuestBsController {
 	}
 	
 	@GetMapping("{id}/del")	//	/guests/1/del
-	public String deleteGuest(Model model, @PathVariable("id") String id) {
+	public String deleteGuest(Model model, @PathVariable("id") Integer id) {
 		try {
 			if (guestService.existsById(id)) {
 				guestService.deleteById(id);

@@ -28,6 +28,8 @@
 		<div class="card">
 		<div class="card-body">
 		<p class="card-text">Review: <span th:text="${appreciation.review}"></span></p>
+		<p class="card-text">Puntuacion:<span th:text="${appreciation.puntuation}"></span></p>
+
 		<a class="btn btn-danger" th:href="@{'/appreciations-bs/' + ${appreciation.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> Edit </a>
 		<a class="btn btn-danger" th:href="@{'/appreciations-bs/' + ${appreciation.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> Delete </a>
 
@@ -40,7 +42,7 @@
 
 				</div>
 				<div class="card-footer text-muted">
-					<a class="btn btn-primary" th:href="@{/guests-bs/new}"
+					<a class="btn btn-primary" th:href="@{/appreciations-bs/new}"
 						role="button"> <i class="fas fa-plus"></i> New
 					</a>
 				</div>

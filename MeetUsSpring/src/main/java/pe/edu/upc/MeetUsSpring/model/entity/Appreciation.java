@@ -52,6 +52,16 @@ public class Appreciation {
 		this.puntuation = puntuation;
 	}
 
+	public Guest getGuest() {
+		return guest;
+	}
+
+	public void setGuest(Guest guest) {
+		this.guest = guest;
+	}
+
+	
+
 	
 
 }
