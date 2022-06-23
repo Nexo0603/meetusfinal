@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: frag-head">
 	<meta charset="ISO-8859-1">
-	<title>List Local Owners</title>
+	<title>Guests Business</title>
 </head>
 <body>
 
@@ -14,39 +14,40 @@
   	<nav aria-label="breadcrumb" class="margin-20">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">Guest</li>
+	    <li class="breadcrumb-item active" aria-current="page">Guests</li>
 	  </ol>
 	</nav>
 	
 	<div class="card text-center margin-20">
 	  <div class="card-header">
-	    Guests
+	    Guests Business
 	  </div>
 	  <div class="card-body">
 	    
 	    <table class="table table-striped">
 		  <thead>
 		    <tr>
-		      <th scope="col">#</th>
+		      <th scope="col">Id</th>
 		      <th scope="col">First Name</th>
 		      <th scope="col">Last Name</th>
 		      <th scope="col">Phone</th>
 		      <th scope="col">DNI</th>
 		      <th scope="col">Address</th>
+		      
 		      <th scope="col"></th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr th:each="Guest : ${Guests}">
-		      <th scope="row" th:text="${Guest.id}">1</th>
-		      <td th:text="${Guest.firstname}"></td>
-		      <td th:text="${Guest.lastName}"></td>
-		      <td th:text="${Guest.phone}"></td>
-		      <td th:text="${Guest.dni}"></td>
-		      <td th:text="${Guest.address}"></td>
+		    <tr th:each="guest : ${guests}">
+		      <td th:text="${guest.id}">Id</td>
+		      <td th:text="${guest.firstName}">FirstName</td>
+		      <td th:text="${guest.lastName}">LastName</td>
+		      <td th:text="${guest.phone}">Phone</td>
+		      <td th:text="${guest.dni}">DNI</td>
+		      <td th:text="${guest.address}">Address</td>
 		      <td>
-		      	<a class="btn btn-warning" th:href="@{'/localowners/' + ${localowner.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
-		      	<a class="btn btn-danger" th:href="@{'/localowners/' + ${localowner.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      	<a class="btn btn-warning" th:href="@{'/guests-bs/' + ${guest.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/guests-bs/' + ${guest.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
 		      </td>
 		    </tr>
 		  </tbody>
@@ -54,7 +55,7 @@
 	    
 	  </div>
 	  <div class="card-footer text-muted">
-	    <a class="btn btn-primary" th:href="@{/localowners/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	    <a class="btn btn-primary" th:href="@{/guests-bs/new}" role="button"> <i class="fas fa-plus"></i> New </a>
 	  </div>
 	</div>
   </section>

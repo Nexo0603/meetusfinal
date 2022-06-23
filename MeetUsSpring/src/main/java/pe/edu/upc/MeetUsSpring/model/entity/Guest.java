@@ -5,9 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.OneToMany;
@@ -18,14 +15,14 @@ import javax.persistence.Table;
 @Table(name = "guests", indexes = {@Index(columnList = "G_lastname, G_firstname", name = "G_index_G_lastname_G_firstname" )})
 public class Guest {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Column(name = "guest_id", length = 3)
+	private String id;
 	
 	@Column(name = "G_firstname",length = 30, nullable = false)
-	private String firstname;
+	private String firstName;
 	
 	@Column(name = "G_lastname",length = 30, nullable = false)
-	private String lastname;
+	private String lastName;
 	
 	@Column(name = "G_phone",length = 9, nullable = false)
 	private String phone;
@@ -36,35 +33,35 @@ public class Guest {
 	@Column(name = "G_address",length = 30, nullable = false)
 	private String address;
 	
-	@OneToMany(mappedBy = "guest", fetch = FetchType.LAZY)
-	private List<Appreciation> apreciaciones;
+	@OneToMany(mappedBy = "guest")
+	private List<Appreciation> appreciations;
 
 	public Guest() {
-		apreciaciones = new ArrayList<Appreciation>();
+		appreciations = new ArrayList<>();
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
 	public String getfirstName() {
-		return firstname;
+		return firstName;
 	}
 
-	public void setfirstName(String firstname) {
-		this.firstname = firstname;
+	public void setfirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastname(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getPhone() {
@@ -90,12 +87,5 @@ public class Guest {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	public List<Appreciation> getApreciaciones() {
-		return apreciaciones;
-	}
-
-	public void setApreciaciones(List<Appreciation> apreciaciones) {
-		this.apreciaciones = apreciaciones;
-	}
+	
 }

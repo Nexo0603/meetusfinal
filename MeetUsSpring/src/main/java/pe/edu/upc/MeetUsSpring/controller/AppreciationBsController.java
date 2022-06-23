@@ -38,7 +38,7 @@ public class AppreciationBsController {
 			e.printStackTrace();
 		}
 		
-		return "appreciations/list-appreciation";
+		return "appreciations-bs/list-appreciation";
 	}
 	
 	@GetMapping("new")	//	/appreciations/new
@@ -52,7 +52,7 @@ public class AppreciationBsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "appreciations/new-appreciation";
+		return "appreciations-bs/new-appreciation";
 	}
 	
 	@PostMapping("savenew")	//	/appreciations/savenew
@@ -63,7 +63,7 @@ public class AppreciationBsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/appreciations";
+		return "redirect:/appreciations-bs";
 	}
 	
 	@GetMapping("{id}/edit")	//	/appreciations/1/edit
@@ -75,14 +75,14 @@ public class AppreciationBsController {
 				List<Guest> guests = guestService.getAll();
 				model.addAttribute("guests", guests);
 			} else {
-				return "redirect:/appreciations";
+				return "redirect:/appreciations-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "appreciations/edit-appreciations";
+		return "appreciations-bs/edit-appreciations";
 	}
 	
 	@PostMapping("{id}/update")	//	/appreciations/1/update
@@ -92,14 +92,14 @@ public class AppreciationBsController {
 			if (appreciationService.existsById(id)) {
 				appreciationService.update(appreciation);
 			} else {
-				return "redirect:/appreciations";
+				return "redirect:/appreciations-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/appreciations";
+		return "redirect:/appreciations-bs";
 	}
 	
 	@GetMapping("{id}/del")	//	/appreciations/1/del
@@ -108,14 +108,14 @@ public class AppreciationBsController {
 			if (appreciationService.existsById(id)) {
 				appreciationService.deleteById(id);
 			} else {
-				return "redirect:/appreciations";
+				return "redirect:/appreciations-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/appreciations";
+		return "redirect:/appreciations-bs";
 	}
 	
 	

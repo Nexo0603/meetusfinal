@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "appreciations", indexes = {@Index(columnList = "A_Review", name = "Appreciation_index_A_Review" )})
+@Table(name = "appreciations", indexes = {@Index(columnList = "A_Review", name = "appreciations_index_A_Review" )})
 public class Appreciation {
 	
 	@Id

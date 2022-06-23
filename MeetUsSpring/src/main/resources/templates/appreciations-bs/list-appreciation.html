@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: frag-head">
 	<meta charset="ISO-8859-1">
-	<title>List Appreciations</title>
+	<title>Appreciations Business</title>
 </head>
 <body>
 
@@ -20,27 +20,28 @@
 	
 	<div class="card text-center margin-20">
 	  <div class="card-header">
-	    Appreciations
+	    Appreciations Business
 	  </div>
 	  <div class="card-body">
 	    
 	    <table class="table table-striped">
 		  <thead>
 		    <tr>
-		      <th scope="col">#</th>
+		      <th scope="col">Id</th>
 		      <th scope="col">Review</th>
-		      <th scope="col">Puntuation</th>
+		      <th scope="col">Puntuacion</th>
+		      
 		      <th scope="col"></th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr th:each="Appreciation : ${Appreciations}">
-		      <th scope="row" th:text="${Appreciation.id}">1</th>
-		      <td th:text="${Appreciation.Review}"></td>
-		      <td th:text="${Appreciation.Puntuation}"></td>
+		    <tr th:each="guest : ${guests}">
+		      <td th:text="${appreciation.id}">Id</td>
+		      <td th:text="${appreciation.review}">Review</td>
+		      <td th:text="${appreciation.puntuation}">Puntuacion</td>
 		      <td>
-		      	<a class="btn btn-warning" th:href="@{'/Appreciations/' + ${Appreciation.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
-		      	<a class="btn btn-danger" th:href="@{'/Appreciations/' + ${Appreciation.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      	<a class="btn btn-warning" th:href="@{'/appreciations/' + ${puntuation.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/appreciations/' + ${puntuation.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
 		      </td>
 		    </tr>
 		  </tbody>
@@ -48,7 +49,7 @@
 	    
 	  </div>
 	  <div class="card-footer text-muted">
-	    <a class="btn btn-primary" th:href="@{/Appreciations/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	    <a class="btn btn-primary" th:href="@{/appreciations/new}" role="button"> <i class="fas fa-plus"></i> New </a>
 	  </div>
 	</div>
   </section>

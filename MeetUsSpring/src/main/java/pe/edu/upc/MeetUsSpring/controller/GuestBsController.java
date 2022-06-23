@@ -40,11 +40,11 @@ public class GuestBsController {
 			e.printStackTrace();
 		}
 		
-		return "guests-bd/list-guests";
+		return "guests-bs/list-guests";
 	}
 	
 	@GetMapping("new")	//	/guests/new
-	public String newStudent(Model model) {
+	public String newGuest(Model model) {
 		Guest guest = new Guest();
 		model.addAttribute("guest", guest);
 		try {
@@ -54,7 +54,7 @@ public class GuestBsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "guests-bd/new-guest";
+		return "guests-bs/new-guest";
 	}
 	
 	@PostMapping("savenew")	//	/guests/savenew
@@ -65,59 +65,59 @@ public class GuestBsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/guests-bd";
+		return "redirect:/guests-bs";
 	}
 	
 	@GetMapping("{id}/edit")	//	/guests/1/edit
-	public String editGuest(Model model, @PathVariable("id") Integer id) {				
+	public String editGuest(Model model, @PathVariable("id") String id) {				
 		try {
 			if (guestService.existsById(id)) {
 				Optional<Guest> optional = guestService.findById(id);
 				model.addAttribute("guest", optional.get());
-				List<Appreciation> appreciation = appreciationService.getAll();
-				model.addAttribute("appreciation", appreciation);
+				List<Appreciation> appreciations = appreciationService.getAll();
+				model.addAttribute("appreciations", appreciations);
 			} else {
-				return "redirect:/guests-bd";
+				return "redirect:/guests-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "guests-bd/edit-guest";
+		return "guests-bs/edit-guest";
 	}
 	
 	@PostMapping("{id}/update")	//	/guests/1/update
 	public String updateGuest(Model model, @ModelAttribute("guest") Guest guest, 
-			@PathVariable("id") Integer id) {
+			@PathVariable("id") String id) {
 		try {
 			if (guestService.existsById(id)) {
 				guestService.update(guest);
 			} else {
-				return "redirect:/guests-bd";
+				return "redirect:/guests-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/guests-bd";
+		return "redirect:/guests-bs";
 	}
 	
 	@GetMapping("{id}/del")	//	/guests/1/del
-	public String deleteGuest(Model model, @PathVariable("id") Integer id) {
+	public String deleteGuest(Model model, @PathVariable("id") String id) {
 		try {
 			if (guestService.existsById(id)) {
 				guestService.deleteById(id);
 			} else {
-				return "redirect:/guests-bd";
+				return "redirect:/guests-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/guests-bd";
+		return "redirect:/guests-bs";
 	}
 	
 	

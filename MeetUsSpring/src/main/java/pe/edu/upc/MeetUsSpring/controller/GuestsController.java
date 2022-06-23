@@ -68,7 +68,7 @@ public class GuestsController {
 	}
 	
 	@GetMapping("{id}/edit")	//	/guests/1/edit
-	public String editGuest(Model model, @PathVariable("id") Integer id) {				
+	public String editGuest(Model model, @PathVariable("id") String id) {				
 		try {
 			if (guestService.existsById(id)) {
 				Optional<Guest> optional = guestService.findById(id);
@@ -88,7 +88,7 @@ public class GuestsController {
 	
 	@PostMapping("{id}/update")	//	/guests/1/update
 	public String updateGuest(Model model, @ModelAttribute("guest") Guest guest, 
-			@PathVariable("id") Integer id) {
+			@PathVariable("id") String id) {
 		try {
 			if (guestService.existsById(id)) {
 				guestService.update(guest);
@@ -104,7 +104,7 @@ public class GuestsController {
 	}
 	
 	@GetMapping("{id}/del")	//	/guests/1/del
-	public String deleteGuest(Model model, @PathVariable("id") Integer id) {
+	public String deleteGuest(Model model, @PathVariable("id") String id) {
 		try {
 			if (guestService.existsById(id)) {
 				guestService.deleteById(id);
