@@ -52,8 +52,6 @@ public class Appreciation {
 		this.puntuation = puntuation;
 	}
 
-	public Guest getGuest() {
-		return guest;
-	}
+	
 
 }

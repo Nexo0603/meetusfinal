@@ -1,61 +1,54 @@
 <!doctype html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: frag-head">
-	<meta charset="ISO-8859-1">
-	<title>Appreciations Business</title>
+<meta charset="ISO-8859-1">
+<title>List Appreciations</title>
 </head>
 <body>
 
-<header th:insert="layout/layout :: frag-header"></header>
-<main>
-	
-  <section>
-  
-  	<nav aria-label="breadcrumb" class="margin-20">
-	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">Appreciations</li>
-	  </ol>
-	</nav>
-	
-	<div class="card text-center margin-20">
-	  <div class="card-header">
-	    Appreciations Business
-	  </div>
-	  <div class="card-body">
-	    
-	    <table class="table table-striped">
-		  <thead>
-		    <tr>
-		      <th scope="col">Id</th>
-		      <th scope="col">Review</th>
-		      <th scope="col">Puntuacion</th>
-		      
-		      <th scope="col"></th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr th:each="guest : ${guests}">
-		      <td th:text="${appreciation.id}">Id</td>
-		      <td th:text="${appreciation.review}">Review</td>
-		      <td th:text="${appreciation.puntuation}">Puntuacion</td>
-		      <td>
-		      	<a class="btn btn-warning" th:href="@{'/appreciations/' + ${puntuation.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
-		      	<a class="btn btn-danger" th:href="@{'/appreciations/' + ${puntuation.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
-		      </td>
-		    </tr>
-		  </tbody>
-		</table>
-	    
-	  </div>
-	  <div class="card-footer text-muted">
-	    <a class="btn btn-primary" th:href="@{/appreciations/new}" role="button"> <i class="fas fa-plus"></i> New </a>
-	  </div>
-	</div>
-  </section>
+	<header th:insert="layout/layout :: frag-header"></header>
+	<main>
 
-</main>
-<footer th:replace="layout/layout :: frag-footer"></footer>	
+		<section>
+
+			<nav aria-label="breadcrumb" class="margin-20">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Appreciations</li>
+				</ol>
+			</nav>
+
+			<div class="card text-center margin-20">
+				<div class="card-header">Appreciations Business</div>
+				<div class="card-body">
+
+		<div class="row">
+		<div class="col-sm-6">
+		<div th:each="appreciation : ${appreciations}" class="col">
+		<div class="card">
+		<div class="card-body">
+		<p class="card-text">Review: <span th:text="${appreciation.review}"></span></p>
+		<a class="btn btn-danger" th:href="@{'/appreciations-bs/' + ${appreciation.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> Edit </a>
+		<a class="btn btn-danger" th:href="@{'/appreciations-bs/' + ${appreciation.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> Delete </a>
+
+		</div>
+		</div>
+		</div>
+		</div>
+
+					</div>
+
+				</div>
+				<div class="card-footer text-muted">
+					<a class="btn btn-primary" th:href="@{/guests-bs/new}"
+						role="button"> <i class="fas fa-plus"></i> New
+					</a>
+				</div>
+			</div>
+		</section>
+
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
 
 </body>
 </html>

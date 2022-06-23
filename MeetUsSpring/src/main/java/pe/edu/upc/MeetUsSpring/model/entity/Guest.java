@@ -33,6 +33,17 @@ public class Guest {
 	@Column(name = "G_address",length = 30, nullable = false)
 	private String address;
 	
+	@Column(name = "lo_urltoimage", length = 200, nullable = true)
+	private String UrlToImage;
+	
+	public String getUrlToImage() {
+		return UrlToImage;
+	}
+
+	public void setUrlToImage(String urlToImage) {
+		UrlToImage = urlToImage;
+	}
+
 	@OneToMany(mappedBy = "guest")
 	private List<Appreciation> appreciations;
 
@@ -48,11 +59,11 @@ public class Guest {
 		this.id = id;
 	}
 
-	public String getfirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setfirstName(String firstName) {
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
@@ -60,7 +71,7 @@ public class Guest {
 		return lastName;
 	}
 
-	public void setLastname(String lastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
