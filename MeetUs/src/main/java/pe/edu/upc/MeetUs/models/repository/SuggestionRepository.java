@@ -9,5 +9,5 @@ import pe.edu.upc.MeetUs.models.entities.Suggestion;
 
 @Repository
 public interface SuggestionRepository extends JpaRepository<Suggestion, Integer> {
-List<Suggestion> findByName(String name) throws Exception;
+	List<Suggestion> findByName(String name) throws Exception;
 }
