@@ -27,12 +27,12 @@
 	    <table class="table table-striped">
 		  <thead>
 		    <tr>
-		      <th scope="col">#</th>
-		      <th scope="col">Name</th>
-		      <th scope="col">Last Name</th>
-		      <th scope="col">Phone</th>
+		      <th scope="col">Id</th>
+		      <th scope="col">Nombre</th>
+		      <th scope="col">Apellido</th>
+		      <th scope="col">Telefono</th>
 		      <th scope="col">DNI</th>
-		      <th scope="col">Address</th>
+		      <th scope="col">Direccion</th>
 		      <th scope="col">Email</th>
 		      
 		      <th scope="col"></th>
@@ -41,11 +41,11 @@
 		  <tbody>
 		    <tr th:each="organizer : ${organizers}">
 		      <td th:text="${organizer.id}">Id</td>
-		      <td th:text="${organizer.name}">Name</td>
-		      <td th:text="${organizer.lastName}">LastName</td>
-		      <td th:text="${organizer.phone}">Phone</td>
+		      <td th:text="${organizer.name}">Nombre</td>
+		      <td th:text="${organizer.lastName}">Apellido</td>
+		      <td th:text="${organizer.phone}">Telefono</td>
 		      <td th:text="${organizer.dni}">DNI</td>
-		      <td th:text="${organizer.address}">Address</td>
+		      <td th:text="${organizer.address}">Direccion</td>
 		      <td th:text="${organizer.email}">Email</td>
 		      
 		      <td>
@@ -58,7 +58,7 @@
 	    
 	  </div>
 	  <div class="card-footer text-muted">
-	    <a class="btn btn-primary" th:href="@{/organizers/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	    <a class="btn btn-primary" th:href="@{/organizers/new}" role="button"> <i class="fas fa-plus"></i> Agregar organizador </a>
 	  </div>
 	</div>
   </section>

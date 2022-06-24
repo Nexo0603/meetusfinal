@@ -21,9 +21,9 @@ import pe.edu.upc.MeetUs.models.entities.Payment;
 
 
 @Controller
-@RequestMapping("/payments")
+@RequestMapping("/payments-bs")
 @SessionAttributes("{payment}")
-public class PaymentController {
+public class PaymentBsController {
 	
 	@Autowired
 	private PaymentService paymentService;
@@ -41,7 +41,7 @@ public class PaymentController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "payments/list-payments";
+		return "payments-bs/list-payments";
 	}
 	
 	@GetMapping("new")
@@ -55,7 +55,7 @@ public class PaymentController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "payments/new-payment";
+		return "payments-bs/new-payment";
 	}
 	
 	@PostMapping("savenew")
@@ -66,7 +66,7 @@ public class PaymentController {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return "redirect:/payments";
+		return "redirect:/payments-bs";
 	}
 	
 	@GetMapping("{id}/edit")	
@@ -78,14 +78,14 @@ public class PaymentController {
 				List<Organizer> organizers = organizerService.getAll();
 				model.addAttribute("organizers", organizers);
 			} else {
-				return "redirect:/payments";
+				return "redirect:/payments-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "payments/edit-payment";
+		return "payments/edit-payment-bs";
 	}
 	
 	@PostMapping("{id}/update")	
@@ -95,14 +95,14 @@ public class PaymentController {
 			if (paymentService.existsById(id)) {
 				paymentService.update(payment);
 			} else {
-				return "redirect:/payments";
+				return "redirect:/payments-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/payments";
+		return "redirect:/payments-bs";
 	}
 	
 	@GetMapping("{id}/del")	
@@ -111,13 +111,13 @@ public class PaymentController {
 			if (paymentService.existsById(id)) {
 				paymentService.deleteById(id);
 			} else {
-				return "redirect:/payments";
+				return "redirect:/payments-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/payments";
+		return "redirect:/payments-bs";
 	}
 }

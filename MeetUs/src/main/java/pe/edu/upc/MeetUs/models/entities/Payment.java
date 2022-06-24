@@ -33,6 +33,9 @@ public class Payment {
 	@Column(name="payment_email", length = 30, nullable = false)
 	private String email;
 	
+	/*@Column(name = "payment_urltoimage", length = 200, nullable = true)
+	private String urlToImage;*/
+	
 	@ManyToOne
 	@JoinColumn(name = "organizer_id")
 	private Organizer organizer;
@@ -92,6 +95,15 @@ public class Payment {
 	public void setOrganizer(Organizer organizer) {
 		this.organizer = organizer;
 	}
+	
+	/*public String getUrlToImage() {
+		return urlToImage;
+	}
+
+	public void setUrlToImage(String urlToImage) {
+		this.urlToImage = urlToImage;
+	}*/
+	
 	
 	
 }
