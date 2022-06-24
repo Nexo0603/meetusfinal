@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Payments Business</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Pagos</li>
+	  </ol>
+	</nav>
+	
+	
+	  <div class="card-header">
+	 
+	  </div>
+	  <div class="card-body">
+	    
+	    <div class="row">
+		  <div  class="col-sm-3 margin-b-10" style="margin: 0 auto;">
+		    <div class="container">
+					<div class="card">
+						<div class="card-header text-white bg-dark mb-3" style="text-align:center" >Detalle de
+							Pago</div>
+						<div class="card-body">
+
+							<div class="table-responsive">
+								<table class="table table-white" >
+
+									<tbody>
+										<tr>
+											<td>Codigo del pago</td>
+											<td th:text="${payment.id}"></td>
+										</tr>
+										<tr>
+											<td>Nombre organizador</td>
+											<td th:text="${payment.organizer.name}"></td>
+										</tr>
+										
+										<tr>
+											<td>Numero de tarjeta</td>
+											<td th:text="${payment.number}"></td>
+										</tr>
+										<tr>
+											<td>CCV</td>
+											<td th:text="${payment.code}"></td>
+										</tr>
+										<tr>
+											<td>Fecha de expiracion</td>
+											<td th:text="${payment.date}"></td>
+										</tr>
+										<tr>
+											<td>Nombre titular de tarjeta</td>
+											<td th:text="${payment.name}"></td>
+										</tr>
+
+									<tr>
+											<td>Email </td>
+											<td th:text="${payment.email}"></td>
+										</tr>
+									</tbody>
+
+								</table>
+								
+								<a class="btn btn-danger" th:href="@{/payments-bs}" role="button" >  Volver  </a>
+							</div>
+						</div>
+					</div>
+				</div>
+		  </div>
+	    
+	  </div>
+	  <div class="card-footer text-muted">
+	    
+	  </div>
+	</div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>

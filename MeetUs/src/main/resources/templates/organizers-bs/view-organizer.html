@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Organizers Business</title>
+</head>
+<body>
+
+	<header th:insert="layout/layout :: frag-header"></header>
+	<main>
+
+		<section>
+
+			<nav aria-label="breadcrumb" class="margin-20">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Inicio</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Organizadores</li>
+				</ol>
+			</nav>
+
+
+			<div class="card-header"></div>
+			<div class="card-body">
+
+				<div class="row">
+					<div class="col-sm-3 margin-b-10" style="margin: 0 auto;">
+						<div class="container">
+							<div class="card">
+								<div class="card-header text-white bg-dark mb-3"
+									style="text-align: center">Detalle de Organizador</div>
+								<div class="card-body">
+									<div style="justify-content: center" align="center">
+										<img th:src="${organizer.urlToImage}" class="card-img-top"
+											alt="..." style="width: 105px; height: 130px">
+									</div>
+									<div class="table-responsive">
+										<table class="table table-white">
+
+											<tbody>
+												<tr>
+													<td>Codigo del organizador</td>
+													<td th:text="${organizer.id}"></td>
+												</tr>
+												<tr>
+													<td>Nombre</td>
+													<td th:text="${organizer.name}"></td>
+												</tr>
+
+												<tr>
+													<td>Apellido</td>
+													<td th:text="${organizer.lastName}"></td>
+												</tr>
+												<tr>
+													<td>Telefono</td>
+													<td th:text="${organizer.phone}"></td>
+												</tr>
+												<tr>
+													<td>Dni</td>
+													<td th:text="${organizer.dni}"></td>
+												</tr>
+												<tr>
+													<td>Direccion</td>
+													<td th:text="${organizer.address}"></td>
+												</tr>
+												<tr>
+													<td>Correo</td>
+													<td th:text="${organizer.email}"></td>
+												</tr>
+
+											</tbody>
+
+										</table>
+
+
+										<a class="btn btn-danger" th:href="@{/organizers-bs}"
+											role="button"> Volver </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="card-footer text-muted"></div>
+			</div>
+
+		</section>
+
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+</body>
+</html>

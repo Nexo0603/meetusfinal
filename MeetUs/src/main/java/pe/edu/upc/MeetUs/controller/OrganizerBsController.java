@@ -18,9 +18,9 @@ import pe.edu.upc.MeetUs.business.crud.PaymentService;
 import pe.edu.upc.MeetUs.models.entities.Organizer;
 
 @Controller
-@RequestMapping("/organizers")
+@RequestMapping("/organizers-bs")
 @SessionAttributes("{organizer}")
-public class OrganizerController {
+public class OrganizerBsController {
 	
 	@Autowired
 	private OrganizerService organizerService;
@@ -38,15 +38,15 @@ public class OrganizerController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "organizers/list-organizers";
+		return "organizers-bs/list-organizers";
 	}
 	
 	@GetMapping("new")
 	public String newOrganizer (Model model) {
 		Organizer organizer = new Organizer();
 		model.addAttribute("organizer", organizer);
-	
-		return "organizers/new-organizer";
+		
+		return "organizers-bs/new-organizer";
 	}
 	
 	@PostMapping("savenew")
@@ -57,7 +57,7 @@ public class OrganizerController {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return "redirect:/organizers";
+		return "redirect:/organizers-bs";
 	}
 	
 	@GetMapping("{id}/edit")	
@@ -69,14 +69,14 @@ public class OrganizerController {
 				List<Organizer> organizers = organizerService.getAll();
 				model.addAttribute("organizers", organizers);
 			} else {
-				return "redirect:/organizers";
+				return "redirect:/organizers-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "organizers/edit-organizer";
+		return "organizers-bs/edit-organizer";
 	}
 	
 	@PostMapping("{id}/update")	
@@ -86,14 +86,14 @@ public class OrganizerController {
 			if (organizerService.existsById(id)) {
 				organizerService.update(organizer);
 			} else {
-				return "redirect:/organizers";
+				return "redirect:/organizers-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/organizers";
+		return "redirect:/organizers-bs";
 	}
 	
 	@GetMapping("{id}/del")	
@@ -102,13 +102,33 @@ public class OrganizerController {
 			if (organizerService.existsById(id)) {
 				organizerService.deleteById(id);
 			} else {
-				return "redirect:/organizers";
+				return "redirect:/organizers-bs";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/organizers";
+		return "redirect:/organizers-bs";
+	}
+	
+	@GetMapping(value = "{id}/view")
+	public String viewOrganizer(@PathVariable("id") String id, Model model/*, RedirectAttributes flash*/) {
+		
+		try {
+		/*if(paymentService.existsById(id)){*/
+			Optional<Organizer> optional = organizerService.findById(id);
+			model.addAttribute("organizer", optional.get());
+		/*}else {*/
+			/*flash.addFlashAttribute("error", "El /pago no existe en la base de datos");
+			return "redirect:/payments-bs";*/
+		/*}*/
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+						e.printStackTrace();
+		}
+		
+		return "organizers-bs/view-organizer";
 	}
 }
