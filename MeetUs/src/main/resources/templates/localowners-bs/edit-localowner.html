@@ -14,7 +14,7 @@
   	<nav aria-label="breadcrumb" class="margin-20">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item"><a th:href="@{/localowners}">Local Owners</a></li>
+	    <li class="breadcrumb-item"><a th:href="@{/localowners-bs}">Local Owners</a></li>
 	    <li class="breadcrumb-item active" aria-current="page">Edit</li>
 	  </ol>
 	</nav>
@@ -25,7 +25,7 @@
 	  </div>
 	  <div class="card-body" style="text-align: left;">
 	  	
-	  	<form th:action="@{'/localowners/' + ${localowner.id} + '/update'}" th:object="${localowner}" method="post" class="row g-3 needs-validation" novalidate>
+	  	<form th:action="@{'/localowners-bs/' + ${localowner.id} + '/update'}" th:object="${localowner}" method="post" class="row g-3 needs-validation" novalidate>
 		  <div class="col-md-3">
 		    <label for="name" class="form-label">Name</label>
 		    <input type="text" class="form-control" th:field="*{name}" required>
@@ -68,7 +68,14 @@
 		      OK!
 		    </div>
 		  </div>
-		  
+		  <div class="col-md-2">
+		    <label for="UrlToImage" class="form-label">UrlToImage</label>
+		    <input type="text" class="form-control" th:field="*{UrlToImage}" required>
+		    <div class="valid-feedback">
+		      OK!
+		    </div>
+		  </div>  
+	
 		  <div class="col-12" style="text-align: center;">
 		    <button class="btn btn-warning" type="submit"><i class="fas fa-save"></i> Update</button>
 		  </div>
