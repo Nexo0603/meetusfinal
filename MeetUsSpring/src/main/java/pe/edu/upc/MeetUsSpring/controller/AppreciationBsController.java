@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import pe.edu.upc.MeetUsSpring.business.crud.AppreciationService;
 import pe.edu.upc.MeetUsSpring.business.crud.GuestService;
 import pe.edu.upc.MeetUsSpring.model.entity.Appreciation;
