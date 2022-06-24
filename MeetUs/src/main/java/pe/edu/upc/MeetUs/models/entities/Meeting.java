@@ -36,9 +36,6 @@ public class Meeting {
 	@Column(name = "m_description", length = 50,nullable = false)
 	private String description;
 	
-	@Column(name = "m_urltoimage", length = 200, nullable = true)
-	private String UrlToImage;
-	
 	@ManyToOne
 	@JoinColumn(name = "local_id")
 	private Local local;	//local_owner id
@@ -89,14 +86,6 @@ public class Meeting {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getUrlToImage() {
-		return UrlToImage;
-	}
-
-	public void setUrlToImage(String urlToImage) {
-		UrlToImage = urlToImage;
 	}
 
 	public Local getLocal() {
