@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: frag-head">
 	<meta charset="ISO-8859-1">
-	<title>Edit Organizer</title>
+	<title>New Organizer</title>
 </head>
 <body>
 
@@ -13,22 +13,21 @@
   
   	<nav aria-label="breadcrumb" class="margin-20">
 	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item"><a th:href="@{/organizers}">Organizers</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+	    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+	    <li class="breadcrumb-item"><a th:href="@{/organizers-bs}">Organizers</a></li>
+	     <li class="breadcrumb-item active" aria-current="page">New</li>
 	  </ol>
 	</nav>
 	
 	<div class="card text-center margin-20">
 	  <div class="card-header">
-	    Editar Organizador
+	    Organizador
 	  </div>
 	  <div class="card-body" style="text-align: left;">
 	  	
-	  	<form th:action="@{'/organizers/' + ${organizer.id} + '/update'}" th:object="${organizer}" method="post" class="row g-3 needs-validation" novalidate>
-		  
-		  
-		   <div class="col-md-3">
+	  	<form th:action="@{/organizers-bs/savenew}" th:object="${organizer}" method="post" class="row g-3 needs-validation" novalidate>
+		 
+		  <div class="col-md-3">
 		    <label for="id" class="form-label">ID</label>
 		    <input type="text" class="form-control" th:field="*{id}" required>
 		    <div class="valid-feedback">
@@ -84,8 +83,16 @@
 		    </div>
 		  </div>
 		  
+		    <div class="col-md-2">
+		    <label for="urlToImage" class="form-label">urlToImage</label>
+		    <input type="text" class="form-control" th:field="*{urlToImage}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  
 		  <div class="col-12" style="text-align: center;">
-		    <button class="btn btn-warning" type="submit"><i class="fas fa-save"></i> Update</button>
+		    <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Agregar Organizador</button>
 		  </div>
 		</form>
 	  

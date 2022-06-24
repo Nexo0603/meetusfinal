@@ -36,6 +36,9 @@ public class Organizer {
 	@Column(name="organizer_email", length = 30, nullable = false)
 	private String email;
 	
+	@Column(name = "organizer_urltoimage", length = 200, nullable = true)
+	private String urlToImage;
+	
 	@OneToMany(mappedBy = "organizer")
 	private List<Payment> payments;
 
@@ -97,6 +100,14 @@ public class Organizer {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getUrlToImage() {
+		return urlToImage;
+	}
+
+	public void setUrlToImage(String urlToImage) {
+		this.urlToImage = urlToImage;
 	}
 	
 }

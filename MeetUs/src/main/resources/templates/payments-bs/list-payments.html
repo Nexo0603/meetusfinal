@@ -29,15 +29,16 @@
 		    <div class="card" > <!--style="display:flex"-->
 		   <!-- <div style="justify-content:center"><img th:src="${payment.urlToImage}" class="card-img-top" alt="..." style="width: 450px; height: 600px"></div>-->
 		      <div class="card-body">
-		      
+		  
+		      <a class="btn btn-primary"th:href="@{'/payments-bs/' + ${payment.id} + '/view'}"
+				role="button">Detalle Pago</a>
+		
 		        <h5 class="card-title" th:text="${payment.organizer.name}">ln</h5>
-			    <h6 class="card-subtitle mb-2 text-muted" th:text="${payment.organizer.lastName}">fn</h6>
+			    
 		        <p class="card-text"> 
-		        	Correo electronico: <span th:text="${payment.organizer.email}"></span>.
+		        	Correo electronico: <span th:text="${payment.email}"></span>.
 		        </p>
-		        <p class="card-text"> 
-		        	Telefono de contacto: <span th:text="${payment.organizer.phone}"></span>. 
-		        </p>
+		       
 		      <!--  <a class="btn btn-warning" th:href="@{'/payments-bs/' + ${payment.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> Edit</a>
 		      	<a class="btn btn-danger" th:href="@{'/payments-bs/' + ${payment.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> Delete </a> -->
 		      </div>
@@ -46,7 +47,7 @@
 	    
 	  </div>
 	  <div class="card-footer text-muted">
-	    <a class="btn btn-primary" th:href="@{/payments-bs/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	    <a class="btn btn-success btn-xs" th:href="@{/payments-bs/new}" role="button"> <i class="fas fa-plus"></i> Nuevo </a>
 	  </div>
 	</div>
 	</div>

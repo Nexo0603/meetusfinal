@@ -120,4 +120,24 @@ public class PaymentBsController {
 		}
 		return "redirect:/payments-bs";
 	}
+	
+	@GetMapping(value = "{id}/view")
+	public String viewPayment(@PathVariable("id") Integer id, Model model/*, RedirectAttributes flash*/) {
+		
+		try {
+		/*if(paymentService.existsById(id)){*/
+			Optional<Payment> optional = paymentService.findById(id);
+			model.addAttribute("payment", optional.get());
+		/*}else {*/
+			/*flash.addFlashAttribute("error", "El /pago no existe en la base de datos");
+			return "redirect:/payments-bs";*/
+		/*}*/
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+						e.printStackTrace();
+		}
+		
+		return "payments-bs/view-payment";
+	}
 }
