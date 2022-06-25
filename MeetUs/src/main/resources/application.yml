@@ -1,12 +1,12 @@
 server:
-  port: 8080
+  port: 8181
 
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/meetus
+    url: jdbc:postgresql://localhost:5432/meetusfinaldb
     username: postgres
-    password: 1234
+    password: nexo
   jpa:
     database: postgresql
     hibernate:

@@ -14,26 +14,26 @@ import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
 @Entity
-@Table(name= "meetings", indexes = {@Index(columnList = "meeting_name", name = "meetings_index_meeting_name")})
+@Table(name= "meetings", indexes = {@Index(columnList = "m_name", name = "meetings_index_m_name")})
 public class Meeting {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "m_name", length = 30,nullable = false)
+	@Column(name = "m_name", length = 50, nullable = false)
 	private String name;
 	
-	@Column(name = "m_date", length = 10,nullable = false)
+	@Column(name = "m_date", length = 50, nullable = false)
 	private String date;
 	
-	@Column(name = "m_hour", length = 8,nullable = false)
+	@Column(name = "m_hour", length = 50, nullable = false)
 	private String hour;
 	
-	@Column(name = "m_type", length = 20,nullable = false)
+	@Column(name = "m_type", length = 50, nullable = false)
 	private String type;
 	
-	@Column(name = "m_description", length = 50,nullable = false)
+	@Column(name = "m_description", length = 100, nullable = false)
 	private String description;
 	
 	@ManyToOne

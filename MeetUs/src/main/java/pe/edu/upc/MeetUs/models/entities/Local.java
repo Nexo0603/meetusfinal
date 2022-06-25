@@ -39,7 +39,7 @@ public class Local {
 	@JoinColumn(name = "localowner_id")
 	private LocalOwner localowner;	//local_owner id
 	
-	@OneToMany(mappedBy = "meeting")
+	@OneToMany(mappedBy = "local")
 	private List<Meeting> meetings;
 
 	public Integer getId() {
