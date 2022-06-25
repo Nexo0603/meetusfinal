@@ -14,7 +14,7 @@
   	<nav aria-label="breadcrumb" class="margin-20">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">Local Owners</li>
+	    <li class="breadcrumb-item active" aria-current="page">Guests</li>
 	  </ol>
 	</nav>
 	
@@ -34,6 +34,7 @@
         <p class="card-text"></p>
         This Guest has this dni <span th:text="${guest.dni}"></span></p>
         This Guest has this cell phone number <span th:text="${guest.phone}"></span></p>
+        <a class="btn btn-primary"th:href="@{'/guests-bs/' + ${guest.id} + '/view'}" role="button">Detalle Guest </a>
         <a class="btn btn-danger" th:href="@{'/guests-bs/' + ${guest.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> Edit </a>
 		<a class="btn btn-danger" th:href="@{'/guests-bs/' + ${guest.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> Delete </a>
       </div>

@@ -118,6 +118,26 @@ public class GuestBsController {
 		return "redirect:/guests-bs";
 	}
 	
+	@GetMapping(value = "{id}/view")
+	public String viewGuest(@PathVariable("id") Integer id, Model model/*, RedirectAttributes flash*/) {
+		
+		try {
+		/*if(paymentService.existsById(id)){*/
+			Optional<Guest> optional = guestService.findById(id);
+			model.addAttribute("guest", optional.get());
+		/*}else {*/
+			/*flash.addFlashAttribute("error", "El /pago no existe en la base de datos");
+			return "redirect:/payments-bs";*/
+		/*}*/
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+						e.printStackTrace();
+		}
+		
+		return "guests-bs/view-guest";
+	}
+	
 	
 }
 

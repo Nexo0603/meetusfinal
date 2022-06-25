@@ -21,9 +21,9 @@ public class Appreciation {
 	@Column(name = "A_Review",length = 50, nullable = false)
 	private String review;
 	
-	@Column(name = "A_Puntuation",length = 2,nullable = false)
+	@Column(name = "A_Puntuation",length = 30,nullable = false)
 	private String puntuation;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "Guest_G_Id")
 	private Guest guest;

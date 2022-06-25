@@ -37,7 +37,7 @@ public class AppreciationBsController {
 			e.printStackTrace();
 		}
 		
-		return "appreciations-bs/list-appreciation";
+		return "appreciations-bs/list-appreciations";
 	}
 	
 	@GetMapping("new")	//	/appreciations/new
@@ -81,7 +81,7 @@ public class AppreciationBsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "appreciations-bs/edit-appreciations";
+		return "appreciations-bs/edit-appreciation";
 	}
 	
 	@PostMapping("{id}/update")	//	/appreciations/1/update
@@ -115,6 +115,26 @@ public class AppreciationBsController {
 			e.printStackTrace();
 		}
 		return "redirect:/appreciations-bs";
+	}
+	
+	@GetMapping(value = "{id}/view")
+	public String viewAppreciation(@PathVariable("id") Integer id, Model model/*, RedirectAttributes flash*/) {
+		
+		try {
+		/*if(paymentService.existsById(id)){*/
+			Optional<Appreciation> optional = appreciationService.findById(id);
+			model.addAttribute("appreciation", optional.get());
+		/*}else {*/
+			/*flash.addFlashAttribute("error", "El /pago no existe en la base de datos");
+			return "redirect:/payments-bs";*/
+		/*}*/
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+						e.printStackTrace();
+		}
+		
+		return "appreciations-bs/view-appreciation";
 	}
 	
 	
