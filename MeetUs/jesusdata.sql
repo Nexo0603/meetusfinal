@@ -11,7 +11,7 @@ INSERT INTO locals(id, l_name, l_district, l_description, l_cost, localowner_id,
 	(4, 'Chilling', 'Magdalena del Mar', '120 People', 60.00, 4, 'https://elperuano.pe/fotografia//thumbnail/2021/01/14/000105629M.jpg');
 
 INSERT INTO meetings(id, m_name, m_date, m_hour, m_type, m_description) VALUES
-	(1, 'Cumpleanos Sandro', '15 de abril', '9 PM', 'Fiesta de cumpleanos', 'drinks and snacks'),
-	(2, 'Cumpleanos Alejandra', '5 de abril', '10 PM', 'Fiesta de cumpleanos', 'drinks and snacks'),
-	(3, 'Cumpleanos Xiomara', '10 de junio', '10 PM', 'Fiesta de cumpleanos', 'drinks and snacks'),
-	(4, 'Compartir Post-Trabajo', '2 de junio', '5 PM', 'Compartir', 'dinner and snacks');
+	(1, 'Sandro´s Birthday', 'April 15', '9 PM', 'Birthday Party', 'drinks and snacks'),
+	(2, 'Alejandra´s Birthday', 'April 5', '10 PM', 'Birthday Party', 'drinks and snacks'),
+	(3, 'Xiomara´s Birthday', 'June 10', '10 PM', 'Birthday Party', 'drinks and snacks'),
+	(4, 'Share Post-Exposure', 'June 2', '5 PM', 'Share with friends', 'dinner and snacks');

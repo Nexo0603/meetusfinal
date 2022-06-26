@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import pe.edu.upc.MeetUs.business.crud.LocalService;
 import pe.edu.upc.MeetUs.business.crud.MeetingService;
 import pe.edu.upc.MeetUs.models.entities.Local;
+import pe.edu.upc.MeetUs.models.entities.LocalOwner;
 import pe.edu.upc.MeetUs.models.entities.Meeting;
 
 @Controller
@@ -118,5 +119,25 @@ public class MeetingBsController {
 			e.printStackTrace();
 		}
 		return "redirect:/meetings-bs";
+	}
+	
+	@GetMapping(value = "{id}/view")
+	public String viewMeeting(@PathVariable("id") Integer id, Model model/*, RedirectAttributes flash*/) {
+		
+		try {
+		/*if(paymentService.existsById(id)){*/
+			Optional<Meeting> optional = meetingService.findById(id);
+			model.addAttribute("meeting", optional.get());
+		/*}else {*/
+			/*flash.addFlashAttribute("error", "El /pago no existe en la base de datos");
+			return "redirect:/payments-bs";*/
+		/*}*/
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+						e.printStackTrace();
+		}
+		
+		return "meetings-bs/view-meeting";
 	}
 }

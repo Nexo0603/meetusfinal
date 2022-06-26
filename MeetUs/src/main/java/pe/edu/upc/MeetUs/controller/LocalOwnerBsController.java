@@ -119,4 +119,25 @@ public class LocalOwnerBsController {
 		}
 		return "redirect:/localowners-bs";
 	}
+	
+	@GetMapping(value = "{id}/view")
+	public String viewLocalOwner(@PathVariable("id") Integer id, Model model/*, RedirectAttributes flash*/) {
+		
+		try {
+		/*if(paymentService.existsById(id)){*/
+			Optional<LocalOwner> optional = localownerService.findById(id);
+			model.addAttribute("localowner", optional.get());
+		/*}else {*/
+			/*flash.addFlashAttribute("error", "El /pago no existe en la base de datos");
+			return "redirect:/payments-bs";*/
+		/*}*/
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+						e.printStackTrace();
+		}
+		
+		return "localowners-bs/view-localowner";
+	}
+
 }
