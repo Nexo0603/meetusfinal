@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Edit Payment</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item"><a th:href="@{/payments-bs}">Payments</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Edit Payments
+	  </div>
+	  <div class="card-body" style="text-align: left;">
+	  	
+	  	<form th:action="@{'/payments-bs/' + ${payment.id} + '/update'}" th:object="${payment}" method="post" class="row g-3 needs-validation" novalidate>
+		
+		   <div class="col-md-3">
+		    <label for="number" class="form-label">Card Number</label>
+		    <input type="text" class="form-control" th:field="*{number}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  
+		  <div class="col-md-3">
+		    <label for="date" class="form-label">Expiration date</label>
+		    <input type="text" class="form-control" th:field="*{date}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  
+		  <div class="col-md-2">
+		    <label for="code" class="form-label">CVV</label>
+		    <input type="text" class="form-control" th:field="*{code}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  
+		    <div class="col-md-2">
+		    <label for="name" class="form-label">Name Owner </label>
+		    <input type="text" class="form-control" th:field="*{name}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  
+		    <div class="col-md-2">
+		    <label for="email" class="form-label">Email</label>
+		    <input type="text" class="form-control" th:field="*{email}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  
+		  <!--  <div class="col-md-2">
+		    <label for="urlToImage" class="form-label">urlToImage</label>
+		    <input type="text" class="form-control" th:field="*{urlToImage}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>-->
+		  
+		  <div class="col-12" style="text-align: center;">
+		    <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Update</button>
+		  </div>
+		</form>
+	  
+	  </div>
+	  <div class="card-footer text-muted">
+
+	  </div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>

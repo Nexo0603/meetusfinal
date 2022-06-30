@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Guests Business</title>
+</head>
+<body>
+
+	<header th:insert="layout/layout :: frag-header"></header>
+	<main>
+
+		<section>
+
+			<nav aria-label="breadcrumb" class="margin-20">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Guests</li>
+				</ol>
+			</nav>
+
+
+			<div class="card-header"></div>
+			<div class="card-body">
+
+				<div class="row">
+					<div class="col-sm-3 margin-b-10" style="margin: 0 auto;">
+						<div class="container">
+							<div class="card">
+								<div class="card-header text-white bg-dark mb-3"
+									style="text-align: center">Guest Detail</div>
+								<div class="card-body">
+									<div style="justify-content: center" align="center"></div>
+									<div class="table-responsive">
+										<table class="table table-white" th:object="${guest}">
+
+											<tbody>
+												<tr>
+													<td></td>
+													<img th:src="${guest.UrlToImage}" alt="..." style="width: 300px; height: 200px">
+													</td>
+												</tr>
+												<tr>
+													<td>Guest ID</td>
+													<td th:text="${guest.id}"></td>
+												</tr>
+												<tr>
+													<td>Name</td>
+													<td th:text="${guest.firstName}"></td>
+												</tr>
+
+												<tr>
+													<td>Last Name</td>
+													<td th:text="${guest.lastName}"></td>
+												</tr>
+
+												<tr>
+													<td>Phone</td>
+													<td th:text="${guest.phone}"></td>
+												</tr>
+
+												<tr>
+													<td>DNI</td>
+													<td th:text="${guest.dni}"></td>
+												</tr>
+
+												<tr>
+													<td>Address</td>
+													<td th:text="${guest.address}"></td>
+												</tr>
+
+
+
+											</tbody>
+
+										</table>
+
+
+										<a class="btn btn-danger" th:href="@{/guests-bs}"
+											role="button"> Back </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="card-footer text-muted"></div>
+			</div>
+
+		</section>
+
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+</body>
+</html>

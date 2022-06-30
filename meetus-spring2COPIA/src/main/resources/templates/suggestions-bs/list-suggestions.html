@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Suggestions Business</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Suggestions</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Guest Suggestions
+	  </div>
+	  <div class="card-body">
+	    
+	    <div class="row">
+		  <div th:each="suggestion : ${suggestions}" class="col-sm-3 margin-b-10">
+		    <div class="card" > 
+		   
+		      <div class="card-body">
+		      
+		      <a class="btn btn-primary"th:href="@{'/suggestions-bs/' + ${suggestion.id} + '/view'}"
+				role="button">Detail of Suggestion</a>
+		      
+		        <h5 class="card-title" th:text="${suggestion.name}"></h5>
+			    
+		        <p class="card-text"> 
+		        	Description: <span th:text="${suggestion.description}"></span>.
+		        </p>
+		       <a class="btn btn-warning" th:href="@{'/suggestions-bs/' + ${suggestion.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> Edit</a>
+		      	<a class="btn btn-danger" th:href="@{'/suggestions-bs/' + ${suggestion.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> Delete </a> 
+		      
+		      </div>
+		    </div>
+		  </div>
+	    
+	  </div>
+	  <div class="card-footer text-muted">
+	    <a class="btn btn-success" th:href="@{/suggestions-bs/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	  </div>
+	</div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>

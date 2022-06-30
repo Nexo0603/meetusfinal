@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Appreciations Business</title>
+</head>
+<body>
+
+	<header th:insert="layout/layout :: frag-header"></header>
+	<main>
+
+		<section>
+
+			<nav aria-label="breadcrumb" class="margin-20">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Appreciations</li>
+				</ol>
+			</nav>
+
+
+			<div class="card-header"></div>
+			<div class="card-body">
+
+				<div class="row">
+					<div class="col-sm-3 margin-b-10" style="margin: 0 auto;">
+						<div class="container">
+							<div class="card">
+								<div class="card-header text-white bg-dark mb-3"
+									style="text-align: center">Appreciation Detail</div>
+								<div class="card-body">
+									<div style="justify-content: center" align="center"></div>
+									<div class="table-responsive">
+										<table class="table table-white" th:object="${appreciation}">
+
+											<tbody>
+												<tr>
+													<td>Appreciation ID</td>
+													<td th:text="${appreciation.id}"></td>
+												</tr>
+												<tr>
+													<td>Review</td>
+													<td th:text="${appreciation.review}"></td>
+												</tr>
+
+												<tr>
+													<td>Punctuation</td>
+													<td th:text="${appreciation.puntuation}"></td>
+												</tr>
+												
+												<tr>
+													<td>Name</td>
+													<td th:text="${appreciation.guest.firstName}"></td>
+												</tr>
+												
+												<tr>
+													<td>Last Name</td>
+													<td th:text="${appreciation.guest.lastName}"></td>
+												</tr>
+												
+											</tbody>
+
+										</table>
+
+
+										<a class="btn btn-danger" th:href="@{/appreciations-bs}"
+											role="button"> Back </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="card-footer text-muted"></div>
+			</div>
+
+		</section>
+
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+</body>
+</html>

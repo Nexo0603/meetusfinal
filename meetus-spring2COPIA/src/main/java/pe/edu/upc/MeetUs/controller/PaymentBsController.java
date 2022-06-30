@@ -1,0 +1,143 @@
+package pe.edu.upc.MeetUs.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import pe.edu.upc.MeetUs.business.crud.OrganizerService;
+import pe.edu.upc.MeetUs.business.crud.PaymentService;
+import pe.edu.upc.MeetUs.models.entities.Organizer;
+import pe.edu.upc.MeetUs.models.entities.Payment;
+
+
+@Controller
+@RequestMapping("/payments-bs")
+@SessionAttributes("{payment}")
+public class PaymentBsController {
+	
+	@Autowired
+	private PaymentService paymentService;
+	
+	@Autowired
+	private OrganizerService organizerService; 
+	
+	@GetMapping
+	public String listPayments(Model model) {
+		
+		try {
+			List<Payment> payments = paymentService.getAll();
+			model.addAttribute("payments", payments);
+		}catch(Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "payments-bs/list-payments";
+	}
+	
+	@GetMapping("new")
+	public String newPayment (Model model) {
+		Payment payment = new Payment();
+		model.addAttribute("payment", payment);
+		try {
+			List<Organizer> organizers = organizerService.getAll();
+			model.addAttribute("organizers", organizers);
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "payments-bs/new-payment";
+	}
+	
+	@PostMapping("savenew")
+	public String savePayment(Model model, @ModelAttribute("payment") Payment payment) {
+		try {
+			Payment paymentSaved = paymentService.create(payment);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return "redirect:/payments-bs";
+	}
+	
+	@GetMapping("{id}/edit")	
+	public String editPayment(Model model, @PathVariable("id") Integer id) {				
+		try {
+			if (paymentService.existsById(id)) {
+				Optional<Payment> optional = paymentService.findById(id);
+				model.addAttribute("payment", optional.get());
+				List<Organizer> organizers = organizerService.getAll();
+				model.addAttribute("organizers", organizers);
+			} else {
+				return "redirect:/payments-bs";
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "payments-bs/edit-payment";
+	}
+	
+	@PostMapping("{id}/update")	
+	public String updatePayment(Model model, @ModelAttribute("payment") Payment payment, 
+			@PathVariable("id") Integer id) {
+		try {
+			if (paymentService.existsById(id)) {
+				paymentService.update(payment);
+			} else {
+				return "redirect:/payments-bs";
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/payments-bs";
+	}
+	
+	@GetMapping("{id}/del")	
+	public String deletePayment(Model model, @PathVariable("id") Integer id) {
+		try {
+			if (paymentService.existsById(id)) {
+				paymentService.deleteById(id);
+			} else {
+				return "redirect:/payments-bs";
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/payments-bs";
+	}
+	
+	@GetMapping(value = "{id}/view")
+	public String viewPayment(@PathVariable("id") Integer id, Model model/*, RedirectAttributes flash*/) {
+		
+		try {
+		/*if(paymentService.existsById(id)){*/
+			Optional<Payment> optional = paymentService.findById(id);
+			model.addAttribute("payment", optional.get());
+		/*}else {*/
+			/*flash.addFlashAttribute("error", "El /pago no existe en la base de datos");
+			return "redirect:/payments-bs";*/
+		/*}*/
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+						e.printStackTrace();
+		}
+		
+		return "payments-bs/view-payment";
+	}
+}

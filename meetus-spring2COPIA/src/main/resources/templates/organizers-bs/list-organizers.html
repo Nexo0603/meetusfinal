@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Organizers Business</title>
+</head>
+<body>
+
+	<header th:insert="layout/layout :: frag-header"></header>
+	<main>
+
+		<section>
+
+			<nav aria-label="breadcrumb" class="margin-20">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Organizers</li>
+				</ol>
+			</nav>
+
+			<div class="card text-center margin-20">
+				<div class="card-header">Organizers Business</div>
+				<div class="card-body">
+
+					<div class="row">
+						<div th:each="organizer : ${organizers}"
+							class="col-sm-3 margin-b-10">
+							<div class="card" style="display: flex">
+								<div style="justify-content: center">
+									<img th:src="${organizer.urlToImage}" class="card-img-top"
+										alt="..." style="width: 225px; height: 300px">
+								</div>
+								<div class="card-body">
+
+									<h5 class="card-title" th:text="${organizer.name}">ln</h5>
+									<h6 class="card-subtitle mb-2 text-muted"
+										th:text="${organizer.lastName}">fn</h6>
+									<p class="card-text">
+										Email: <span th:text="${organizer.email}"></span>.
+									</p>
+									<p class="card-text">
+										Phone: <span th:text="${organizer.phone}"></span>.
+									</p>
+																		
+									<a class="btn btn-primary"
+										th:href="@{'/organizers-bs/' + ${organizer.id} + '/view'}"
+										role="button">Detail Organizer </a>
+										
+									 <a class="btn btn-warning"
+										th:href="@{'/organizers-bs/' + ${organizer.id} + '/edit'}"
+										role="button"> <i class="fas fa-edit"></i> Edit
+									</a> 
+									
+									<a class="btn btn-danger"
+										th:href="@{'/organizers-bs/' + ${organizer.id} + '/del'}"
+										role="button"> <i class="fas fa-trash-alt"></i> Delete
+									</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="card-footer text-muted">
+						<a class="btn btn-success" th:href="@{/organizers-bs/new}"
+							role="button"> <i class="fas fa-save"></i> New 
+						</a>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="frag-head">
+<script src="https://kit.fontawesome.com/ce2bf601a4.js" crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+  <link th:href="@{/css/fontawesome.min.css}" rel="stylesheet" >
+  <link th:href="@{/css/solid.min.css}" rel="stylesheet" > 
+  <link th:href="@{/css/style.css}" rel="stylesheet" >
+  <title>MeetUs</title>
+</head>
+<body>
+
+<header th:fragment="frag-header">	<!-- Crear un fragmento -->
+	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(255, 0, 0);" >
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="#"><img src="https://imagizer.imageshack.com/img922/839/pD1nfa.png" 
+					class="card-img-top" alt="..."
+						width="80px" height="80px"
+						style="object-fit: cover;"
+					/></a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	      
+	        <!--<li class="nav-item">
+	          <a class="nav-link" aria-current="page" th:href="@{/organizers-bs}"><i class="fa-solid fa-chalkboard-user"></i> Organizers </a>
+	        </li>
+	        	        
+	        <li class="nav-item">
+	          <a class="nav-link" aria-current="page" th:href="@{/guests-bs}"><i class="fa-solid fa-id-card-clip"></i> Guests</a>
+	        </li>
+	        
+	         <li class="nav-item">
+	          <a class="nav-link" aria-current="page" th:href="@{/localowners-bs}"><i class="fa-solid fa-building-user"></i> Local Owners </a>
+	        </li>
+	        
+	          <li class="nav-item">
+	          <a class="nav-link" aria-current="page" th:href="@{/locals-bs}"><i class="fa-solid fa-building"></i> Locals </a>
+	        </li>
+	        
+	          <li class="nav-item">
+	          <a class="nav-link" aria-current="page" th:href="@{/meetings-bs}"><i class="fas fa-users"></i> Meetings </a>
+	        </li>
+	        
+	        <li class="nav-item">
+	          <a class="nav-link " aria-current="page" th:href="@{/payments-bs}"><i class="fa-solid fa-cart-shopping"></i> Payments </a>
+	        </li>  	        
+	               
+	         <li class="nav-item">
+	          <a class="nav-link" aria-current="page" th:href="@{/appreciations-bs}"><i class="fas fa-user-edit"></i> Appreciations </a>
+	        </li>
+	        
+	        <li class="nav-item">
+	          <a class="nav-link" aria-current="page" th:href="@{/suggestions-bs}"><i class="fa-solid fa-comment"></i> Suggestions </a>
+	        </li> -->
+	        
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_ORGANIZER')">
+	          <a class="nav-link" aria-current="page" th:href="@{/meetings-bs}"><i class="fa-solid fa-comment"></i> Meetings </a>
+	        </li>
+	        
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_ORGANIZER')">
+	          <a class="nav-link" aria-current="page" th:href="@{/payments-bs}"><i class="fa-solid fa-comment"></i> Payments </a>
+	        </li>
+	        
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_ORGANIZER')">
+	          <a class="nav-link" aria-current="page" th:href="@{/suggestions-bs}"><i class="fa-solid fa-comment"></i> Suggestions </a>
+	        </li>
+	        
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_ORGANIZER')">
+	          <a class="nav-link" aria-current="page" th:href="@{/appreciations-bs}"><i class="fa-solid fa-comment"></i> Appreciations </a>
+	        </li>
+	        
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_GUEST')">
+	          <a class="nav-link" aria-current="page" th:href="@{/meetings-bs}"><i class="fa-solid fa-comment"></i> Meetings </a>
+	        </li>
+	        
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_GUEST')">
+	          <a class="nav-link" aria-current="page" th:href="@{/suggestions-bs}"><i class="fa-solid fa-comment"></i> Suggestions </a>
+	        </li>
+	        
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_GUEST')">
+	          <a class="nav-link" aria-current="page" th:href="@{/appreciations-bs}"><i class="fa-solid fa-comment"></i> Appreciations </a>
+	        </li>
+	        
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_LOCALOWNER')">
+	          <a class="nav-link" aria-current="page" th:href="@{/locals-bs}"><i class="fa-solid fa-comment"></i> Locals </a>
+	        </li>
+	        
+	        <li class="nav-item" sec:authorize="hasRole('ROLE_LOCALOWNER')">
+	          <a class="nav-link" aria-current="page" th:href="@{/payments-bs}"><i class="fa-solid fa-comment"></i> Payments </a>
+	        </li>
+	        
+	        <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMINISTRATOR')">
+	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            CRUD
+	          </a>
+	          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+	            <li><a class="dropdown-item" th:href="@{/organizers-bs}"><i class="fa-solid fa-chalkboard-user"></i> Organizers </a></li>
+	            <li><a class="dropdown-item" th:href="@{/guests-bs}"><i class="fa-solid fa-id-card-clip"></i> Guests </a></li>
+	            <li><a class="dropdown-item" th:href="@{/localowners-bs}"><i class="fa-solid fa-building-user"></i> Local Owners </a></li>
+	            <li><hr class="dropdown-divider"></li>
+	            <li><a class="dropdown-item" th:href="@{/locals-bs}"><i class="fa-solid fa-building"></i> Locals </a></li>
+	            <li><a class="dropdown-item" th:href="@{/meetings-bs}"><i class="fas fa-users"></i> Meetings </a></li>
+	            <li><a class="dropdown-item" th:href="@{/payments-bs}"><i class="fa-solid fa-cart-shopping"></i> Payments </a></li>
+	            <li><a class="dropdown-item" th:href="@{/appreciations-bs}"><i class="fas fa-user-edit"></i> Appreciations </a></li>
+	            <li><a class="dropdown-item" th:href="@{/suggestions-bs}"><i class="fa-solid fa-comment"></i> Suggestions </a></li>
+	          </ul>
+	        </li>
+	              	      
+	      </ul>
+	      <form class="d-flex">
+	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+	        <button class="btn btn-warning" type="submit"><i class="fas fa-search"></i></button>
+	      </form>
+	      <a sec:authorize="isAnonymous()" class="btn btn-outline-light" th:href="@{/users/sign-up}" role="button"><i class="fas fa-user"></i> Sign-up</a>
+          <a sec:authorize="isAnonymous()" class="btn btn-outline-warning" th:href="@{/login}" role="button"><i class="fas fa-user"></i> Sign-in</a>
+
+          <div class="dropdown" sec:authorize="isAuthenticated()">
+              <a class="btn btn-outline-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user-circle"></i> <span sec:authentication="name">Username</span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" th:href="@{/users/view-profile}">View Profile</a></li>
+                <li><a class="dropdown-item" href="#">Change Password</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+              </ul>
+          </div>
+	    </div>
+	  </div>
+	</nav>
+</header>
+<main>
+	<section>
+	
+	</section>
+</main>
+<footer th:fragment="frag-footer">
+	<p>MeetUs</p>
+	<script th:src="@{/js/bootstrap.bundle.min.js}" ></script>
+</footer>	
+  
+</body>
+</html>

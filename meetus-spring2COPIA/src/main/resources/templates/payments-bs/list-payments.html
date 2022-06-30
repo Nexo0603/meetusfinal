@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Payments Business</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Payments</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	  Organizers Payments
+	  </div>
+	  <div class="card-body">
+	    
+	    <div class="row">
+		  <div th:each="payment : ${payments}" class="col-sm-3 margin-b-10">
+		    <div class="card" > <!--style="display:flex"-->
+		   <!-- <div style="justify-content:center"><img th:src="${payment.urlToImage}" class="card-img-top" alt="..." style="width: 450px; height: 600px"></div>-->
+		      <div class="card-body">
+				
+		        <h5 class="card-title" th:text="${payment.organizer.name}"></h5>
+			    
+		        <p class="card-text"> 
+		        	Email: <span th:text="${payment.email}"></span>.
+		        </p>
+		        
+		        <a class="btn btn-primary"th:href="@{'/payments-bs/' + ${payment.id} + '/view'}"
+				role="button">Detail Payments</a>
+		       
+		      <!--  <a class="btn btn-warning" th:href="@{'/payments-bs/' + ${payment.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> Edit</a>
+		      	<a class="btn btn-danger" th:href="@{'/payments-bs/' + ${payment.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> Delete </a> -->
+		      </div>
+		    </div>
+		  </div>
+	    
+	  </div>
+	  <div class="card-footer text-muted">
+	    <a class="btn btn-success btn-xs" th:href="@{/payments-bs/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	  </div>
+	</div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>
